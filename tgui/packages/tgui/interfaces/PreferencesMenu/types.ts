@@ -208,6 +208,7 @@ export type PreferencesMenuData = {
       loadout_lists: LoadoutList; // NOVA EDIT CHANGE - Multiple loadout presets - ORIGINAL: loadout_list: LoadoutList;
       job_clothes: BooleanLike;
       loadout_index: string; // NOVA EDIT ADDITION: Multiple loadout presets
+      tts_seed: string;
     };
 
     randomization: Record<string, RandomSetting>;
@@ -255,6 +256,21 @@ export type PreferencesMenuData = {
 
   active_slot: number;
   name_to_use: string;
+
+  tts_enabled: BooleanLike;
+  providers: Array<{
+    name: string;
+    is_enabled: BooleanLike;
+  }>;
+  seeds: Array<{
+    name: string;
+    value: string;
+    category: string;
+    gender: string;
+    provider: string;
+    donator_level: number;
+  }>;
+  phrases: string[];
 
   window: PrefsWindow;
 };
