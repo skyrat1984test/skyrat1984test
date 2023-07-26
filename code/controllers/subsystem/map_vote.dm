@@ -107,6 +107,16 @@ SUBSYSTEM_DEF(map_vote)
 
 /// Returns a list of all map options that are invalid for the current population.
 /datum/controller/subsystem/map_vote/proc/get_valid_map_vote_choices()
+	var/list/valid_maps = list()
+
+	// Fill in our default choices with all of the maps in our map config, if they are votable and not blocked.
+	var/list/maps = shuffle(global.config.maplist)
+	for(var/map in maps)
+		var/datum/map_config/possible_config = config.maplist[map]
+		if(!possible_config.votable || (possible_config.map_name in SSpersistence.blocked_maps)) // NOVA EDIT CHANGE - Can't vote for the current map - ORIGINAL: if(!possible_config.votable || (possible_config.map_name in SSpersistence.blocked_maps))
+			continue
+		valid_maps += possible_config.map_name
+
 	var/filter_threshold = 0
 	if(SSticker.HasRoundStarted())
 		filter_threshold = get_active_player_count(alive_check = FALSE, afk_check = TRUE, human_check = FALSE)
