@@ -1,0 +1,17 @@
+name: Deploy on server remotely
+on: workflow_dispatch
+jobs:
+  build:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+    steps:
+      - name: Execute remote SSH script
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: bash deploy.sh
