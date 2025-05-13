@@ -153,7 +153,7 @@
 		for(var/alarm_type in alarm_types_show)
 			msg += "[uppertext(alarm_type)]: [alarm_types_show[alarm_type]] alarms detected. - "
 
-		msg += "<A href=?src=[REF(src)];showalerts=1'>\[Show Alerts\]</a>"
+		msg += "<A href=byond://?src=[REF(src)];showalerts=1'>\[Show Alerts\]</a>"
 		to_chat(src, msg)
 
 	if(length(alarms_to_clear) < 3)
@@ -166,7 +166,7 @@
 		for(var/alarm_type in alarm_types_clear)
 			msg += "[uppertext(alarm_type)]: [alarm_types_clear[alarm_type]] alarms cleared. - "
 
-		msg += "<A href=?src=[REF(src)];showalerts=1'>\[Show Alerts\]</a>"
+		msg += "<A href=byond://?src=[REF(src)];showalerts=1'>\[Show Alerts\]</a>"
 		to_chat(src, msg)
 
 
@@ -314,7 +314,7 @@
 	if (laws.zeroth)
 		if (!(laws.zeroth in lawcheck))
 			law_display = "No"
-		list += {"<A href='byond://?src=[REF(src)];lawc=0'>[law_display] 0:</A> <font color='#ff0000'><b>[laws.zeroth]</b></font><BR>"}
+		list += {"<a href='byond://?src=[REF(src)];lawc=0'>[law_display] 0:</a> <font color='#ff0000'><b>[laws.zeroth]</b></font><br>"}
 
 	for (var/index in 1 to length(laws.hacked))
 		law_display = "Yes"
@@ -322,7 +322,7 @@
 		if (length(law) > 0)
 			if (!(law in hackedcheck))
 				law_display = "No"
-			list += {"<A href='byond://?src=[REF(src)];lawh=[index]'>[law_display] [ion_num()]:</A> <font color='#660000'>[law]</font><BR>"}
+			list += {"<a href='byond://?src=[REF(src)];lawh=[index]'>[law_display] [ion_num()]:</a> <font color='#660000'>[law]</font><br>"}
 
 	for (var/index in 1 to length(laws.ion))
 		law_display = "Yes"
@@ -330,7 +330,7 @@
 		if (length(law) > 0)
 			if(!(law in ioncheck))
 				law_display = "No"
-			list += {"<A href='byond://?src=[REF(src)];lawi=[index]'>[law_display] [ion_num()]:</A> <font color='#547DFE'>[law]</font><BR>"}
+			list += {"<a href='byond://?src=[REF(src)];lawi=[index]'>[law_display] [ion_num()]:</a> <font color='#547DFE'>[law]</font><br>"}
 
 	var/number = 1
 	for (var/index in 1 to length(laws.inherent))
@@ -339,7 +339,7 @@
 		if (length(law) > 0)
 			if (!(law in lawcheck))
 				law_display = "No"
-			list += {"<A href='byond://?src=[REF(src)];lawc=[index]'>[law_display] [number]:</A> [law]<BR>"}
+			list += {"<a href='byond://?src=[REF(src)];lawc=[index]'>[law_display] [number]:</a> [law]<br>"}
 			number++
 
 	for (var/index in 1 to length(laws.supplied))
@@ -348,11 +348,13 @@
 		if (length(law) > 0)
 			if (!(law in lawcheck))
 				law_display = "No"
-			list += {"<A href='byond://?src=[REF(src)];lawc=[number]'>[law_display] [number]:</A> <font color='#990099'>[law]</font><BR>"}
+			list += {"<a href='byond://?src=[REF(src)];lawc=[number]'>[law_display] [number]:</a> <font color='#990099'>[law]</font><br>"}
 			number++
-	list += {"<br><br><A href='byond://?src=[REF(src)];laws=1'>State Laws</A>"}
+	list += {"<br><br><a href='byond://?src=[REF(src)];laws=1'>State Laws</a>"}
 
-	usr << browse(list, "window=laws")
+	var/datum/browser/browser = new(usr, "laws")
+	browser.set_content(list)
+	browser.open()
 
 /mob/living/silicon/proc/ai_roster()
 	if(!client)
