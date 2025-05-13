@@ -55,7 +55,7 @@
 		relay_loc = "1,1"
 		rebuild_plane_masters()
 
-	set_hud(viewing_hud)
+	our_hud = viewing_hud
 	our_hud.master_groups[key] = src
 	show_hud()
 	build_planes_offset(our_hud, active_offset)
