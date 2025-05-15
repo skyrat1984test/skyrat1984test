@@ -15,6 +15,7 @@ import { LoadoutPage } from './loadout';
 import { MainPage } from './MainPage';
 import { QuirksPage } from './QuirksPage';
 import { SpeciesPage } from './SpeciesPage';
+import { VoicePage } from './VoicePage';
 
 enum Page {
   Antags,
@@ -27,6 +28,7 @@ enum Page {
   Limbs,
   Languages,
   // NOVA EDIT ADDITION END
+  Voice
 }
 
 type ProfileProps = {
@@ -102,6 +104,9 @@ export function CharacterPreferenceWindow(props) {
       pageContents = <LanguagesPage />;
       break;
     // NOVA EDIT ADDITION END
+    case Page.Voice:
+      pageContents = <VoicePage />;
+      break;
 
     default:
       exhaustiveCheck(currentPage);
@@ -202,6 +207,18 @@ export function CharacterPreferenceWindow(props) {
               Quirks
             </PageButton>
           </Stack.Item>
+
+          {Boolean(data.tts_enabled) && (
+            <Stack.Item grow>
+              <PageButton
+                currentPage={currentPage}
+                page={Page.Voice}
+                setPage={setCurrentPage}
+              >
+                Voice
+              </PageButton>
+            </Stack.Item>
+          )}
         </Stack>
       </Stack.Item>
       <Stack.Divider />
