@@ -1,4 +1,20 @@
-# You can use the "$include" directive to split your configs however you want
+# --------------------------------------------------------------------------------------
+# THERE STILL MIGHT BE SOME VALUES OVERRIDEN BY dev_overrides, at this moment those are:
+#SERVER
+#SQL_ENABLED
+#FEEDBACK_DATABASE
+#FEEDBACK_TABLEPREFIX
+#FEEDBACK_LOGIN
+#FEEDBACK_PASSWORD
+#ADDRESS
+#PORT
+#DISABLE_ERP_PREFERENCES
+#DISABLE_LEWD_ITEMS
+#DISABLE_MISMATCHED_PARTS
+#SERVERSQLNAME
+#HOSTEDBY
+#PUBLIC_ADDRESS
+# --------------------------------------------------------------------------------------
 
 # You can use the "$include" directive to split your configs however you want
 
@@ -23,28 +39,23 @@ $include map_vote.txt
 # There are various options which are hard-locked for security reasons.
 
 ## Server name: This appears at the top of the screen in-game and in the BYOND hub. Uncomment and replace 'tgstation' with the name of your choice.
-# SERVERNAME tgstation
+SERVERNAME [RU] [LRP] SS1984 Skyrat Event
 
 ## Server tagline: This will appear right below the server's title.
-# SERVERTAGLINE A generic TG-based server
+SERVERTAGLINE Event server of SS1984 Skyrat
 
 ## Discord Link: This is the link to Nova Sector's discord server
+# NOTE: uncommenting this might prevent players to join game if not setup correctly
 # DISCORD_LINK https://discord.gg/novasector
 
-## Server SQL name: This is the name used to identify the server to the SQL DB, distinct from SERVERNAME as it must be at most 32 characters.
-# SERVERSQLNAME tgstation
-
 ## Station name: The name of the station as it is referred to in-game. If commented out, the game will generate a random name instead.
-STATIONNAME Space Station 13
-
-## Put on byond hub: Uncomment this to put your server on the byond hub.
-#HUB
+STATIONNAME Station of Sky Rat
 
 ## Once the server population reaches this number, it will be taken off the byond hub. 0 disables.
 #MAX_HUB_POP 100
 
 ## Lobby time: This is the amount of time between rounds that players have to setup their characters and be ready.
-LOBBY_COUNTDOWN 120
+LOBBY_COUNTDOWN 300
 
 ## Round End Time: This is the amount of time after the round ends that players have to murder death kill each other.
 ROUND_END_COUNTDOWN 90
@@ -52,7 +63,7 @@ ROUND_END_COUNTDOWN 90
 ## Comment this out if you want to use the SQL based admin system, the legacy system uses admins.txt.
 ## You need to set up your database to use the SQL based system.
 ## This flag is automatically enabled if SQL_ENABLED isn't
-ADMIN_LEGACY_SYSTEM
+#ADMIN_LEGACY_SYSTEM
 
 ##Uncomment this to stop any admins loaded by the legacy system from having their rank edited by the permissions panel
 #PROTECT_LEGACY_ADMINS
@@ -144,13 +155,10 @@ VOTE_PERIOD 600
 ## 0 = Cannot respawn (default)
 ## 1 = Can respawn
 ## 2 = Can respawn if choosing a different character
-ALLOW_RESPAWN 0
+ALLOW_RESPAWN 2
 
 ## Respawn delay (deciseconds), which doesn't allow to return to lobby
-RESPAWN_DELAY 0
-
-## set a hosted by name for unix platforms
-HOSTEDBY Yournamehere
+RESPAWN_DELAY 12000
 
 ## Uncomment this to stop people connecting to your server without a registered ckey. (i.e. guest-* are all blocked from connecting)
 GUEST_BAN
@@ -170,7 +178,7 @@ GUEST_BAN
 ## Whether clients which cannot be checked due to a rate limit will be denied
 #IPINTEL_REJECT_RATE_LIMITED
 ## Whether clients which are flagged as a VPN will be denied
-IPINTEL_REJECT_BAD
+#IPINTEL_REJECT_BAD
 ## Whether clients which cannot be checked due to an error of some form will be denied
 #IPINTEL_REJECT_UNKNOWN
 ## How long to store results in the cache before they must be retrieved again. IN DAYS.
@@ -188,14 +196,6 @@ IPINTEL_REJECT_BAD
 
 ## Set to prevent anyone but those ckeys listed in config/whitelist.txt and config/admins.txt from joining your server
 #USEWHITELIST
-
-## The address shown for the game server in the TGS check command
-# PUBLIC_ADDRESS ss13.example.com:2506
-
-## set a server location for world reboot. Don't include the byond://, just give the address and port.
-## Don't set this to the same server, BYOND will automatically restart players to the server when it has restarted.
-## This is also used to show the server's address in the TGS check command if the public address isn't set
-# SERVER ss13.example.com:2506
 
 ## forum address
 # FORUMURL http://tgstation13.org/phpBB/index.php
@@ -224,7 +224,7 @@ IPINTEL_REJECT_BAD
 # GAMELOGURL
 
 ## Ban appeals URL - usually for a forum or wherever people should go to contact your admins.
-# BANAPPEALS http://justanotherday.example.com
+BANAPPEALS https://discord.gg/ss1984
 
 ## System command that invokes yt-dlp, used by Play Internet Sound.
 ## You can install yt-dlp with
@@ -307,7 +307,7 @@ SOFT_POPCAP_MESSAGE Be warned that the server is currently serving a high number
 HARD_POPCAP_MESSAGE The server is currently serving a high number of users, You cannot currently join. You may wait for the number of living crew to decline, observe, or find alternative servers.
 
 ## Uncomment for 'extreme' population caps, players will not be allowed to join the server if living crew exceeds the listed number.
-#EXTREME_POPCAP 200
+EXTREME_POPCAP 100
 
 ## Message for extreme cap
 EXTREME_POPCAP_MESSAGE The server is currently serving a high number of users, find alternative servers.
@@ -375,11 +375,10 @@ PREFERENCE_MAP_VOTING 1
 
 ## AUTOADMIN
 ## The default admin rank
-AUTOADMIN_RANK Game Master
+AUTOADMIN_RANK Admin
 
 ## Uncomment to automatically give that admin rank to all players
 #AUTOADMIN
-
 
 ## Uncomment to automatically deadmin players whenever they are controlling a mob.
 #AUTO_DEADMIN_ALWAYS
@@ -493,7 +492,6 @@ DISABLE_HIGH_POP_MC_MODE_AMOUNT 60
 ## Uncomment to set the number of /world/Reboot()s before the DreamDaemon restarts itself. 0 means restart every round. Requires tgstation server tools.
 #ROUNDS_UNTIL_HARD_RESTART 10
 
-
 ##Default view size, in tiles.
 ##	By default, this is 15x15, which gets simplified to 7 by byond
 ##  15x15 would be the standard square view. 21x15 is what goonstation uses for widescreen.
@@ -578,7 +576,7 @@ MOTD motd.txt
 ## The cache is assumed to be cleared by TGS recompiling, which deletes `cache/`.
 ## This should be disabled (through `CACHE_ASSETS 0`) on development,
 ## but enabled on production (the default).
-CACHE_ASSETS 0
+CACHE_ASSETS 60
 
 ## Enables 'smart' asset caching, for assets that support it.
 ## This is a type of asset cache that automatically invalidates itself based on inputs to the asset generation.
