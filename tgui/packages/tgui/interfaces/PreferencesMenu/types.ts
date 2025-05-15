@@ -256,8 +256,10 @@ export type PreferencesMenuData = {
 
   active_slot: number;
   name_to_use: string;
-
   tts_enabled: BooleanLike;
+
+  window: PrefsWindow;
+
   providers: Array<{
     name: string;
     is_enabled: BooleanLike;
@@ -271,8 +273,6 @@ export type PreferencesMenuData = {
     donator_level: number;
   }>;
   phrases: string[];
-
-  window: PrefsWindow;
 };
 
 export type ServerData = {
