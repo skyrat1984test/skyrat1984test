@@ -13,7 +13,6 @@
 	desc = "A 12 gauge hollow point slug purpose built for unarmored targets."
 	icon_state = "stunshell"
 	projectile_type = /obj/projectile/bullet/shotgun_slug/hp
-	advanced_print_req = TRUE
 
 /obj/projectile/bullet/shotgun_slug/hp
 	name = "12g hollow point shotgun slug"
@@ -28,7 +27,6 @@
 	icon_state = "apshell"
 	projectile_type = /obj/projectile/bullet/shotgun_slug/pt20
 	custom_materials = AMMO_MATS_SHOTGUN_PT20
-	advanced_print_req = TRUE
 
 /obj/projectile/bullet/shotgun_slug/pt20
 	name = "armor piercing shotgun slug"
@@ -41,15 +39,14 @@
 	icon_state = "ripshell"
 	projectile_type = /obj/projectile/bullet/shotgun_slug/rip
 	custom_materials = AMMO_MATS_SHOTGUN_RIP
-	advanced_print_req = TRUE
 
 /obj/projectile/bullet/shotgun_slug/rip
 	name = "RIP shotgun slug"
 	damage = 50
 	weak_against_armour = TRUE
-	embed_type = /datum/embed_data/shotgun_slug
+	embed_type = /datum/embedding/shotgun_slug
 
-/datum/embed_data/shotgun_slug
+/datum/embedding/shotgun_slug
 	embed_chance = 80
 	pain_chance=40
 	fall_chance=5
@@ -67,7 +64,6 @@
 	custom_materials = AMMO_MATS_SHOTGUN_TEMP
 	pellets = 5
 	variance = 20
-	advanced_print_req = TRUE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/iceblox //see /obj/projectile/temp for the original code
 	name = "iceblox pellet"
