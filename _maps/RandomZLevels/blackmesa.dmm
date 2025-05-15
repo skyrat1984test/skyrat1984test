@@ -3457,7 +3457,6 @@
 "aSL" = (
 /obj/structure/rack/shelf,
 /obj/item/melee/baton/security,
-/obj/item/gun/ballistic/shotgun/automatic/as2,
 /obj/item/storage/box/ammo_box/shotgun_12g,
 /obj/item/storage/box/ammo_box/shotgun_12g,
 /turf/open/floor/iron/smooth_large,

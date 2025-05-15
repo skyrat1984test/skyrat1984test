@@ -29,7 +29,6 @@
 	name = ".460 Ceres hollow-point bullet casing"
 	desc = "A .460 hollow-point bullet casing. Very lethal against unarmored opponents. Suffers against armor."
 	projectile_type = /obj/projectile/bullet/c45/hp
-	advanced_print_req = TRUE
 
 /obj/projectile/bullet/c45/hp
 	name = ".460 Ceres hollow-point bullet"
@@ -93,7 +92,6 @@
 	<br><br>\
 	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?"
 	projectile_type = /obj/projectile/bullet/a223/ap
-	advanced_print_req = TRUE
 	custom_materials = AMMO_MATS_AP
 
 /obj/projectile/bullet/a223/ap
@@ -138,7 +136,6 @@
 	caliber = "c34acp"
 	projectile_type = /obj/projectile/bullet/c34/ap
 	custom_materials = AMMO_MATS_AP
-	advanced_print_req = TRUE
 
 /obj/projectile/bullet/c34/ap
 	name = ".34 armor-piercing bullet"
@@ -152,7 +149,6 @@
 	caliber = "c34acp"
 	projectile_type = /obj/projectile/bullet/incendiary/c34_incendiary
 	custom_materials = AMMO_MATS_TEMP
-	advanced_print_req = TRUE
 
 /obj/projectile/bullet/incendiary/c34_incendiary
 	name = ".34 incendiary bullet"

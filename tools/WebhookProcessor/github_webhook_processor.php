@@ -356,16 +356,12 @@ function handle_pr($payload) {
 	$validated = validate_user($payload);
 	switch ($payload["action"]) {
 		case 'opened':
-			list($labels, $remove) = tag_pr($payload, true);
-			set_labels($payload, $labels, $remove);
 			if($no_changelog)
 				check_dismiss_changelog_review($payload);
 			break;
 		case 'edited':
 			check_dismiss_changelog_review($payload);
 		case 'synchronize':
-			list($labels, $remove) = tag_pr($payload, false);
-			set_labels($payload, $labels, $remove);
 			return;
 		case 'reopened':
 			$action = $payload['action'];
@@ -398,7 +394,7 @@ function handle_pr($payload) {
 	if (!is_blacklisted($discord_announce_blacklist, $repo_name)) {
 		discord_announce($action, $payload, $pr_flags);
 	}
-	
+
 	if (in_array($repo_name, $game_announce_whitelist)) {
 		game_announce($action, $payload, $pr_flags);
 	}
@@ -578,16 +574,6 @@ function discord_sanitize($text, $flags = S_MENTIONS|S_LINK_EMBED|S_MARKDOWN) {
 //creates a comment on the payload issue
 function create_comment($payload, $comment){
 	github_apisend($payload['pull_request']['comments_url'], 'POST', json_encode(array('body' => $comment)));
-}
-
-//returns the payload issue's labels as a flat array
-function get_pr_labels_array($payload){
-	$url = $payload['pull_request']['issue_url'] . '/labels';
-	$issue = json_decode(github_apisend($url), true);
-	$result = array();
-	foreach($issue as $l)
-		$result[] = $l['name'];
-	return $result;
 }
 
 function is_maintainer($payload, $author){

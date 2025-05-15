@@ -9,7 +9,7 @@ import {
   LabeledList,
   Section,
   Table,
-} from '../../components';
+} from 'tgui-core/components';
 import { PreferencesMenuData } from './data';
 
 const donatorTiers = {

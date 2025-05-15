@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(polling)
 	name = "Polling"
 	flags = SS_BACKGROUND | SS_NO_INIT
 	wait = 1 SECONDS
-	runlevels = RUNLEVEL_GAME
+	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	/// List of polls currently ongoing, to be checked on next fire()
 	var/list/datum/candidate_poll/currently_polling
 	/// Number of polls performed since the start
@@ -155,7 +155,18 @@ SUBSYSTEM_DEF(polling)
 			act_never = "[custom_link_style_start]<a href='byond://?src=[REF(poll_alert_button)];never=1'[custom_link_style_end]>\[Never For This Round\]</a>"
 
 		if(!duplicate_message_check(alert_poll)) //Only notify people once. They'll notice if there are multiple and we don't want to spam people.
-			SEND_SOUND(candidate_mob, 'sound/announcer/notice/notice2.ogg')
+
+			// ghost poll prompt sound handling
+			var/polling_sound_pref = candidate_mob.client?.prefs.read_preference(/datum/preference/choiced/sound_ghost_poll_prompt)
+			var/polling_sound_volume = candidate_mob.client?.prefs.read_preference(/datum/preference/numeric/sound_ghost_poll_prompt_volume)
+			if(polling_sound_pref != GHOST_POLL_PROMPT_DISABLED && polling_sound_volume)
+				var/polling_sound
+				if(polling_sound_pref == GHOST_POLL_PROMPT_1)
+					polling_sound = 'sound/misc/prompt1.ogg'
+				else
+					polling_sound = 'sound/misc/prompt2.ogg'
+				SEND_SOUND(candidate_mob, sound(polling_sound, volume = polling_sound_volume))
+
 			var/surrounding_icon
 			if(chat_text_border_icon)
 				var/image/surrounding_image
@@ -165,7 +176,7 @@ SUBSYSTEM_DEF(polling)
 				else
 					surrounding_image = image(chat_text_border_icon)
 				surrounding_icon = icon2html(surrounding_image, candidate_mob, extra_classes = "bigicon")
-			var/final_message =  examine_block("<span style='text-align:center;display:block'>[surrounding_icon] <span style='font-size:1.2em'>[span_ooc(question)]</span> [surrounding_icon]\n[act_jump]      [act_signup]      [act_never]</span>")
+			var/final_message =  boxed_message("<span style='text-align:center;display:block'>[surrounding_icon] <span style='font-size:1.2em'>[span_ooc(question)]</span> [surrounding_icon]\n[act_jump]      [act_signup]      [act_never]</span>")
 			to_chat(candidate_mob, final_message)
 
 		// Start processing it so it updates visually the timer
@@ -173,8 +184,10 @@ SUBSYSTEM_DEF(polling)
 
 	// Sleep until the time is up
 	UNTIL(new_poll.finished)
-	if(!(amount_to_pick > 0))
+	if(!amount_to_pick)
 		return new_poll.signed_up
+	if (!length(new_poll.signed_up))
+		return null
 	for(var/pick in 1 to amount_to_pick)
 		// There may be less people signed up than amount_to_pick
 		// pick_n_take returns the default return value of null if passed an empty list, so just break in that case rather than adding null to the list.

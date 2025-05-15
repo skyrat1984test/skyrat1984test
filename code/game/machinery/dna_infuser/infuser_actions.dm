@@ -41,6 +41,8 @@
 	if(!LAZYACCESS(params2list(params), RIGHT_CLICK))
 		return
 	. = ..()
+	if(!.)
+		return
 
 	var/modifiers = params2list(params)
 	clicker.visible_message(
@@ -48,7 +50,7 @@
 		span_bold("You spit ink."),
 	)
 	var/obj/projectile/ink_spit/ink = new /obj/projectile/ink_spit(clicker.loc)
-	ink.preparePixelProjectile(target, clicker, modifiers)
+	ink.aim_projectile(target, clicker, modifiers)
 	ink.firer = clicker
 	ink.fire()
 	playsound(clicker, 'sound/items/weapons/pierce.ogg', 20, TRUE, -1)
