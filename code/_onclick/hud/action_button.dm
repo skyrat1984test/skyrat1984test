@@ -73,6 +73,9 @@
 		linked_action.update_button_status(src)
 		return
 	linked_action.full_key = tgui_input_keycombo(user, "Please bind a key for this action.")
+	// NOVA EDIT 1984 ADDITION START - Convert properly russian keybindings to english
+	linked_action.full_key = convert_ru_key_to_en_key(linked_action.full_key)
+	// NOVA EDIT 1984 ADDITION END
 	linked_action.update_button_status(src)
 
 // Entered and Exited won't fire while you're dragging something, because you're still "holding" it
