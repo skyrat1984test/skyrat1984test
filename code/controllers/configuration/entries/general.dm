@@ -247,6 +247,8 @@
 
 /datum/config_entry/flag/allow_holidays
 
+/datum/config_entry/flag/use_server_config // Will load config_server.txt instead of config.txt
+	protection = CONFIG_ENTRY_LOCKED
 
 /datum/config_entry/flag/admin_legacy_system //Defines whether the server uses the legacy admin system with admins.txt or the SQL system
 	protection = CONFIG_ENTRY_LOCKED
