@@ -108,8 +108,8 @@
 
 	var/error_string = craft_sheet.construct_item(user, actual_recipe)
 
-	if(!isatom(error_string))
-		to_chat(user, span_warning("crafting failed" + error_string))
+	if(istext(error_string))
+		to_chat(user, span_warning("Crafting failed[error_string]"))
 
 /// Alerts any examiners to the recipe, if they wish to know more.
 /datum/element/slapcrafting/proc/get_examine_info(atom/source, mob/user, list/examine_list)
@@ -180,7 +180,7 @@
 	// If we did find ingredients then add them onto the list.
 	if(length(string_ingredient_list))
 		to_chat(user, span_boldnotice("Extra Ingredients:"))
-		to_chat(user, examine_block(span_notice(string_ingredient_list)))
+		to_chat(user, boxed_message(span_notice(string_ingredient_list)))
 
 	var/list/tool_list = ""
 
@@ -194,7 +194,7 @@
 
 	if(length(tool_list))
 		to_chat(user, span_boldnotice("Required Tools:"))
-		to_chat(user, examine_block(span_notice(tool_list)))
+		to_chat(user, boxed_message(span_notice(tool_list)))
 
 	qdel(cur_recipe)
 

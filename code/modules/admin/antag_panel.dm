@@ -72,7 +72,7 @@ GLOBAL_VAR(antag_prototypes)
 				if (R.emagged)
 					common_commands += "<a href='byond://?src=[REF(src)];silicon=unemagcyborgs'>Unemag slaved cyborgs</a>"
 					break
-	common_commands += "<a href='?src=[REF(src)];common=toggle_exploitables'>Toggle exploitables override</a>" //NOVA EDIT ADDITION -- EXPLOITABLES
+	common_commands += "<a href='byond://?src=[REF(src)];common=toggle_exploitables'>Toggle exploitables override</a>" //NOVA EDIT ADDITION -- EXPLOITABLES
 	return common_commands
 
 /datum/mind/proc/get_special_statuses()
@@ -196,14 +196,10 @@ GLOBAL_VAR(antag_prototypes)
 		var/uplink_info = "<i><b>Uplink</b></i>:"
 		var/datum/component/uplink/U = find_syndicate_uplink()
 		if(U)
-			if(!U.uplink_handler.has_objectives)
-				uplink_info += "<a href='byond://?src=[REF(src)];common=takeuplink'>take</a>"
 			if (check_rights(R_FUN, 0))
 				uplink_info += ", <a href='byond://?src=[REF(src)];common=crystals'>[U.uplink_handler.telecrystals]</a> TC"
 				if(U.uplink_handler.has_progression)
 					uplink_info += ", <a href='byond://?src=[REF(src)];common=progression'>[U.uplink_handler.progression_points]</a> PR"
-				if(U.uplink_handler.has_objectives)
-					uplink_info += ", <a href='byond://?src=[REF(src)];common=give_objective'>Force Give Objective</a>"
 			else
 				uplink_info += ", [U.uplink_handler.telecrystals] TC"
 				if(U.uplink_handler.has_progression)

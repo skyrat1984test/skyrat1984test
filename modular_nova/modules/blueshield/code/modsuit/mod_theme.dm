@@ -12,8 +12,7 @@
 	default_skin = "praetorian"
 	armor_type = /datum/armor/mod_theme_blueshield
 	atom_flags = PREVENT_CONTENTS_EXPLOSION_1
-	slowdown_inactive = 0.75
-	slowdown_active = 0.25
+	slowdown_deployed = 0.5
 	resistance_flags = FIRE_PROOF|ACID_PROOF
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	siemens_coefficient = 0

@@ -5,4 +5,4 @@
 	icon = 'modular_nova/modules/aesthetics/emitter/icons/emitter.dmi'
 
 /obj/machinery/field/generator
-	icon = 'modular_nova/modules/aesthetics/emitter/icons/field_generator.dmi'
+	icon = 'modular_nova/modules/aesthetics/emitter/icons/emitter.dmi'

@@ -1,5 +1,4 @@
-// THIS IS A SKYRAT UI FILE
-import { useBackend, useLocalState } from '../backend';
+// THIS IS A NOVA SECTOR UI FILE
 import {
   Box,
   Button,
@@ -8,7 +7,9 @@ import {
   NoticeBox,
   Section,
   Stack,
-} from '../components';
+} from 'tgui-core/components';
+
+import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
 
 export const ArmamentStation = (props) => {
@@ -19,7 +20,7 @@ export const ArmamentStation = (props) => {
   return (
     <Window theme="armament" title="Armament Station" width={1000} height={600}>
       <Window.Content>
-        <Section grow height="100%" title="Armaments Station">
+        <Section height="100%" title="Armaments Station">
           {card_inserted ? (
             <Stack>
               <Stack.Item grow fill>
@@ -95,8 +96,8 @@ export const ArmamentStation = (props) => {
                                 <img
                                   src={`data:image/jpeg;base64,${item.icon}`}
                                   style={{
-                                    verticalAlign: 'middle',
-                                    textAlign: 'center',
+                                    'vertical-align': 'middle',
+                                    'horizontal-align': 'middle',
                                   }}
                                 />
                                 &nbsp;{item.name}
@@ -119,15 +120,15 @@ export const ArmamentStation = (props) => {
                         item.ref === weapon && (
                           <Stack vertical key={item.ref}>
                             <Stack.Item>
-                              <Image
-                                src={`data:image/jpeg;base64,${item.icon}`}
-                                height={'100%'}
-                                width={'100%'}
-                                style={{
-                                  verticalAlign: 'middle',
-                                  horizontalAlign: 'middle',
+                              <Image>
+                                src=
+                                {`data:image/jpeg;base64,${item.icon}`}
+                                height={'100%'} width={'100%'} style=
+                                {{
+                                  'vertical-align': 'middle',
+                                  'horizontal-align': 'middle',
                                 }}
-                              />
+                              </Image>
                             </Stack.Item>
                             <Stack.Item>{item.description}</Stack.Item>
                             <Stack.Item

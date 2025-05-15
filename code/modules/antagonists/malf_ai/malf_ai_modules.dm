@@ -63,12 +63,12 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 	button_icon = 'icons/mob/actions/actions_AI.dmi'
 	/// The owner AI, so we don't have to typecast every time
 	var/mob/living/silicon/ai/owner_AI
-	/// If we have multiple uses of the same power
-	var/uses
+	/// Amount of uses for this action. Defining this as 0 will make this infinite-use
+	var/uses = FALSE
 	/// If we automatically use up uses on each activation
 	var/auto_use_uses = TRUE
 	/// If applicable, the time in deciseconds we have to wait before using any more modules
-	var/cooldown_period
+	var/cooldown_period = 0 SECONDS
 
 /datum/action/innate/ai/Grant(mob/living/player)
 	. = ..()
@@ -79,16 +79,16 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 		owner_AI = owner
 
 /datum/action/innate/ai/IsAvailable(feedback = FALSE)
+	if(owner_AI && !COOLDOWN_FINISHED(owner_AI, malf_cooldown))
+		return FALSE
 	. = ..()
-	if(owner_AI && owner_AI.malf_cooldown > world.time)
-		return
 
 /datum/action/innate/ai/Trigger(trigger_flags)
 	. = ..()
 	if(auto_use_uses)
 		adjust_uses(-1)
 	if(cooldown_period)
-		owner_AI.malf_cooldown = world.time + cooldown_period
+		COOLDOWN_START(owner_AI, malf_cooldown, cooldown_period)
 
 /datum/action/innate/ai/proc/adjust_uses(amt, silent)
 	uses += amt
@@ -188,33 +188,34 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 	set_up_us_the_bomb(owner)
 
 /datum/action/innate/ai/nuke_station/proc/set_up_us_the_bomb(mob/living/owner)
+	//oh my GOD.
 	set waitfor = FALSE
 	message_admins("[key_name_admin(owner)][ADMIN_FLW(owner)] has activated AI Doomsday.")
 	var/pass = prob(10) ? "******" : "hunter2"
-	to_chat(owner, "<span class='small boldannounce'>run -o -a 'selfdestruct'</span>")
+	to_chat(owner, "<span class='small bolddanger'>run -o -a 'selfdestruct'</span>")
 	sleep(0.5 SECONDS)
 	if(QDELETED(owner) || !isturf(owner_AI.loc))
 		active = FALSE
 		return
-	to_chat(owner, "<span class='small boldannounce'>Running executable 'selfdestruct'...</span>")
+	to_chat(owner, "<span class='small bolddanger'>Running executable 'selfdestruct'...</span>")
 	sleep(rand(10, 30))
 	if(QDELETED(owner) || !isturf(owner_AI.loc))
 		active = FALSE
 		return
 	owner.playsound_local(owner, 'sound/announcer/alarm/bloblarm.ogg', 50, 0, use_reverb = FALSE)
 	to_chat(owner, span_userdanger("!!! UNAUTHORIZED SELF-DESTRUCT ACCESS !!!"))
-	to_chat(owner, span_boldannounce("This is a class-3 security violation. This incident will be reported to Central Command."))
+	to_chat(owner, span_bolddanger("This is a class-3 security violation. This incident will be reported to Central Command."))
 	for(var/i in 1 to 3)
 		sleep(2 SECONDS)
 		if(QDELETED(owner) || !isturf(owner_AI.loc))
 			active = FALSE
 			return
-		to_chat(owner, span_boldannounce("Sending security report to Central Command.....[rand(0, 9) + (rand(20, 30) * i)]%"))
+		to_chat(owner, span_bolddanger("Sending security report to Central Command.....[rand(0, 9) + (rand(20, 30) * i)]%"))
 	sleep(0.3 SECONDS)
 	if(QDELETED(owner) || !isturf(owner_AI.loc))
 		active = FALSE
 		return
-	to_chat(owner, "<span class='small boldannounce'>auth 'akjv9c88asdf12nb' [pass]</span>")
+	to_chat(owner, "<span class='small bolddanger'>auth 'akjv9c88asdf12nb' [pass]</span>")
 	owner.playsound_local(owner, 'sound/items/timer.ogg', 50, 0, use_reverb = FALSE)
 	sleep(3 SECONDS)
 	if(QDELETED(owner) || !isturf(owner_AI.loc))
@@ -232,7 +233,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 	if(QDELETED(owner) || !isturf(owner_AI.loc))
 		active = FALSE
 		return
-	to_chat(owner, "<span class='small boldannounce'>Y</span>")
+	to_chat(owner, "<span class='small bolddanger'>Y</span>")
 	sleep(1.5 SECONDS)
 	if(QDELETED(owner) || !isturf(owner_AI.loc))
 		active = FALSE
@@ -243,7 +244,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 	if(QDELETED(owner) || !isturf(owner_AI.loc))
 		active = FALSE
 		return
-	to_chat(owner, "<span class='small boldannounce'>Y</span>")
+	to_chat(owner, "<span class='small bolddanger'>Y</span>")
 	sleep(rand(15, 25))
 	if(QDELETED(owner) || !isturf(owner_AI.loc))
 		active = FALSE
@@ -254,7 +255,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 	if(QDELETED(owner) || !isturf(owner_AI.loc))
 		active = FALSE
 		return
-	to_chat(owner, "<span class='small boldannounce'>[pass]</span>")
+	to_chat(owner, "<span class='small bolddanger'>[pass]</span>")
 	sleep(4 SECONDS)
 	if(QDELETED(owner) || !isturf(owner_AI.loc))
 		active = FALSE
@@ -478,7 +479,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 	if(QDELETED(to_animate))
 		return
 
-	new /mob/living/simple_animal/hostile/mimic/copy/machine(get_turf(to_animate), to_animate, clicker, TRUE)
+	new /mob/living/basic/mimic/copy/machine(get_turf(to_animate), to_animate, clicker, TRUE)
 
 /// Destroy RCDs: Detonates all non-cyborg RCDs on the station.
 /datum/ai_module/malf/destructive/destroy_rcd
@@ -821,7 +822,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 	button_icon_state = "reactivate_cameras"
 	uses = 30
 	auto_use_uses = FALSE
-	cooldown_period = 30
+	cooldown_period = 3 SECONDS
 
 /datum/action/innate/ai/reactivate_cameras/New()
 	..()
@@ -918,12 +919,12 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 /datum/ai_module/malf/upgrade/mecha_domination
 	name = "Unlock Mech Domination"
 	description = "Allows you to hack into a mech's onboard computer, shunting all processes into it and ejecting any occupants. \
-		Do not allow the mech to leave the station's vicinity or allow it to be destroyed. \
-		Upgrade is done immediately upon purchase."
+		Upgrade is done immediately upon purchase. Do not allow the mech to leave the station's vicinity or allow it to be destroyed. \
+		If your core is destroyed, you will be lose connection with the Doomsday Device and the countdown will cease."
 	cost = 30
 	upgrade = TRUE
 	unlock_text = span_notice("Virus package compiled. Select a target mech at any time. <b>You must remain on the station at all times. \
-		Loss of signal will result in total system lockout.</b>")
+		Loss of signal will result in total system lockout. If your inactive core is destroyed, you will be lose connection with the Doomsday Device and the countdown will cease.</b>")
 	unlock_sound = 'sound/vehicles/mecha/nominal.ogg'
 
 /datum/ai_module/malf/upgrade/mecha_domination/upgrade(mob/living/silicon/ai/AI)
