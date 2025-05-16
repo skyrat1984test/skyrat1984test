@@ -486,6 +486,8 @@
   - qol: Mentoring books no longer give a choices in dream maker language, but rather
       in a normal human language. No more datum/skill/gaming as a writing option.
 2025-05-16:
+  DenIS318:
+  - server: testing changelog compilation
   Hardly:
   - bugfix: Removed Emo Long now that TG's Long Emo uses the same sprites.
   Rengan:
