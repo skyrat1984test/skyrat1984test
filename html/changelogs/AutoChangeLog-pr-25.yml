@@ -1,0 +1,4 @@
+author: "DenIS318"
+delete-after: True
+changes:
+  - spellcheck: "Russian localization for human/golem/wizard names + localized some verbs (currently TESTING)"
