@@ -178,6 +178,11 @@
 /// Checks if we should perform the tutorial for the given user, and performs if so.
 /// Use `SStutorials.suggest_tutorial` instead of calling this directly.
 /datum/tutorial_manager/proc/try_perform(mob/user, list/arguments)
+	// SS1984 EDIT START
+	if(CONFIG_GET(flag/disable_tutorials))
+		return
+	// SS1984 EDIT END
+
 	var/datum/tutorial/tutorial = new tutorial_type(user)
 	if (!tutorial.should_perform(user))
 		qdel(tutorial)
