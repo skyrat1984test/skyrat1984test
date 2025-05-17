@@ -327,12 +327,9 @@
 	design_ids += list(
 		"borg_upgrade_surgicaltools",
 	)
-	return ..()
 
-// ENGINEERING
-/datum/techweb_node/engineering/New()
-	design_ids += list(
-		"rad_collector",
+	design_ids -= list(
+		"borg_upgrade_pinpointer",
 	)
 	return ..()
 
