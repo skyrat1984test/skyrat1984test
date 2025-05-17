@@ -301,6 +301,39 @@
  */
 #define rustg_noise_poisson_map(seed, width, length, radius) RUSTG_CALL(RUST_G, "noise_poisson_map")(seed, width, length, radius)
 
+/**
+ * Register a list of nodes into a rust library. This list of nodes must have been serialized in a json.
+ * Node {// Index of this node in the list of nodes
+ *  	  unique_id: usize,
+ *  	  // Position of the node in byond
+ *  	  x: usize,
+ *  	  y: usize,
+ *  	  z: usize,
+ *  	  // Indexes of nodes connected to this one
+ *  	  connected_nodes_id: Vec<usize>}
+ * It is important that the node with the unique_id 0 is the first in the json, unique_id 1 right after that, etc.
+ * It is also important that all unique ids follow. {0, 1, 2, 4} is not a correct list and the registering will fail
+ * Nodes should not link across z levels.
+ * A node cannot link twice to the same node and shouldn't link itself either
+ */
+#define rustg_register_nodes_astar(json) RUSTG_CALL(RUST_G, "register_nodes_astar")(json)
+
+/**
+ * Add a new node to the static list of nodes. Same rule as registering_nodes applies.
+ * This node unique_id must be equal to the current length of the static list of nodes
+ */
+#define rustg_add_node_astar(json) RUSTG_CALL(RUST_G, "add_node_astar")(json)
+
+/**
+ * Remove every link to the node with unique_id. Replace that node by null
+ */
+#define rustg_remove_node_astar(unique_id) RUSTG_CALL(RUST_G, "remove_node_astar")("[unique_id]")
+
+/**
+ * Compute the shortest path between start_node and goal_node using A*. Heuristic used is simple geometric distance
+ */
+#define rustg_generate_path_astar(start_node_id, goal_node_id) RUSTG_CALL(RUST_G, "generate_path_astar")("[start_node_id]", "[goal_node_id]")
+
 /*
  * Takes in a string and json_encode()"d lists to produce a sanitized string.
  * This function operates on whitelists, there is currently no way to blacklist.
@@ -367,6 +400,14 @@
 #define rustg_time_microseconds(id) text2num(RUSTG_CALL(RUST_G, "time_microseconds")(id))
 #define rustg_time_milliseconds(id) text2num(RUSTG_CALL(RUST_G, "time_milliseconds")(id))
 #define rustg_time_reset(id) RUSTG_CALL(RUST_G, "time_reset")(id)
+
+/// Returns the current timestamp (in local time), formatted with the given format string.
+/// See https://docs.rs/chrono/latest/chrono/format/strftime/index.html for documentation on the formatting syntax.
+#define rustg_formatted_timestamp(format) RUSTG_CALL(RUST_G, "formatted_timestamp")(format)
+
+/// Returns the current timestamp (with the given UTC offset in hours), formatted with the given format string.
+/// See https://docs.rs/chrono/latest/chrono/format/strftime/index.html for documentation on the formatting syntax.
+#define rustg_formatted_timestamp_tz(format, offset) RUSTG_CALL(RUST_G, "formatted_timestamp")(format, offset)
 
 /// Returns the timestamp as a string
 /proc/rustg_unix_timestamp()
