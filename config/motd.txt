@@ -1,5 +1,23 @@
 <!-- Most valid html will work in here, but you have to use URL links for images. -->
 
-<h1>Welcome to Space Station 13!</h1>
+<h1>Добро пожаловать на ивентовый SS1984 Skyrat</h1>
+<br>
+<b>Действующие правила: </b><br>
+<p><a href="https://skyrat.ss220.space/index.php/Рулынерулы">https://skyrat.ss220.space/index.php/Рулынерулы</a></p>
+<b>В данный момент сервер находится на стадии тестирования</b>
+<ul>
+  <li>У сервера отдельная база данных: прогресс не переносится</li>
+  <li>На сервере отключен TTS</li>
+  <li>Может производиться тестирование любых изменений</li>
+  <li>Временно: <b>VPN разрешен, но только на данном сервере</b></li>
+</ul>
+<p>Пример упоминания сервера (баг-репорты и т.д.) в дискорде SS1984:</p>
+<ol>
+  <li>Skyrat <b><u>Event</b></u></li>
+</ol>
+</p>
 
-<i>This server is running a /tg/station 13 Git build.</i>
+<p><b>Для подключения адрес сервера: </b>89.169.0.84:7731</p>
+<b>Discord:</b> <a href="https://discord.gg/ss1984">https://discord.gg/ss1984</a>
+<br>
+<b>Github:</b> <a href="https://github.com/skyrat1984test/skyrat1984test">https://github.com/skyrat1984test/skyrat1984test</a>
