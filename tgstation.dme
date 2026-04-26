@@ -10014,6 +10014,6 @@
 #include "modular_celadon\modules\weapons_addon\code\weapon_PZH\weapon\automatically_weapon.dm"
 #include "modular_celadon\modules\cargo\code\weapon_PZH.dm"
 #include "modular_celadon\modules\weapons_addon\code\Genes\White_knickle_gen_skeleton\Bone.dm"
-#include "modular_celadon\modules\weapons_addon\code\Genes\White_knickle_gen_skeleton\Gen_skeleton.dm"
 #include "modular_celadon\modules\weapons_addon\code\Genes\White_knickle_gen_skeleton\Buttons.dm"
+#include "modular_celadon\modules\weapons_addon\code\Genes\White_knickle_gen_skeleton\Gen_skeleton.dm"
 // END_INCLUDE
