@@ -1,5 +1,5 @@
 /datum/mutation/human/bone_spurs
-	name = "Skeleton"
+	name = "Autotomous Skeleton"
 	desc = "A mutation that allows the user to protrude sharpened high-density bones from their hands."
 	quality = POSITIVE
 	difficulty = 16
@@ -8,14 +8,15 @@
 	locked = TRUE
 	instability = POSITIVE_INSTABILITY_MODERATE
 	energy_coeff = 1
-	power_path = /datum/action/cooldown/mutation/bone_spur
 
 /datum/mutation/human/bone_spurs/on_acquiring(mob/living/carbon/human/human)
 	. = ..()
-	human.AddElement(/datum/action/cooldown/mutation/bone_spur/left)
-	human.AddElement(/datum/action/cooldown/mutation/bone_spur/right)
+	var/datum/action/cooldown/mutation/bone_spur/left/left_action = new /datum/action/cooldown/mutation/bone_spur/left
+	left_action.Grant(human)
+	var/datum/action/cooldown/mutation/bone_spur/right/right_action = new /datum/action/cooldown/mutation/bone_spur/right
+	right_action.Grant(human)
 
 /datum/mutation/human/bone_spurs/on_losing(mob/living/carbon/human/human)
 	. = ..()
-	human.RemoveElement(/datum/action/cooldown/mutation/bone_spur/left)
-	human.RemoveElement(/datum/action/cooldown/mutation/bone_spur/right)
+	for(var/datum/action/cooldown/mutation/bone_spur/spur_action in human.actions)
+		spur_action.Remove(human)

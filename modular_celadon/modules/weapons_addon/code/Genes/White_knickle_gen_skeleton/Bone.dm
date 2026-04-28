@@ -3,10 +3,10 @@
 	desc = "A sharp, high-density bone shard protruding from the user's hand. Can be thrown or used as a stabbing weapon."
 	icon = 'modular_celadon/modules/weapons_addon/icons/Skeleton.dmi'
 	icon_state = "Bone_spur"
-	force = 20
-	throwforce = 25
+	force = 30
+	throwforce = 30
 	throw_speed = 3
-	throw_range = 6
+	throw_range = 12
 	sharpness = SHARP_EDGED
 	armour_penetration = 30
 	w_class = WEIGHT_CLASS_SMALL
