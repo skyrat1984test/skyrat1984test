@@ -22,15 +22,15 @@
     fire_sound = 'modular_celadon/modules/weapons_addon/code/weapon_PZH/sound/bad-explosion.ogg'
     fire_sound_volume = 100
     // System heat
-    var/current_heat = 0
-    var/max_heat = 100
-    var/heat_per_shot = 5
-    var/cool_down_per_second = 2
-    var/overheated = FALSE
-    var/rod_extended = FALSE
-    var/cooling_timer = null
-    var/image/current_rod_overlay
-    var/image/current_mag_overlay
+    var/current_heat = 0 // Текущая температура ствола
+    var/max_heat = 100 // Порог перегрева
+    var/heat_per_shot = 5 // Нагрев за выстрел
+    var/cool_down_per_second = 2 // Скорость охлаждения
+    var/overheated = FALSE // Флаг перегрева , если TRUE , не может стрелять
+    var/rod_extended = FALSE // Флаг состояния стержня
+    var/cooling_timer = null // Ссылка на таймер остывания
+    var/image/current_rod_overlay // Хранит ссылку на созданный оврлей стержня
+    var/image/current_mag_overlay // Хранит ссылку на созданный оверлей магазина
 /obj/item/gun/ballistic/automatic/automatically_weapon/Initialize(mapload)
     . = ..()
     AddComponent(/datum/component/automatic_fire, 0.3 SECONDS)
