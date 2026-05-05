@@ -23,17 +23,6 @@
     fire_sound_volume = 100
 
     // System heat
-<<<<<<< HEAD
-    var/current_heat = 0 // Текущая температура ствола
-    var/max_heat = 100 // Порог перегрева
-    var/heat_per_shot = 5 // Нагрев за выстрел
-    var/cool_down_per_second = 2 // Скорость охлаждения
-    var/overheated = FALSE // Флаг перегрева , если TRUE , не может стрелять
-    var/rod_extended = FALSE // Флаг состояния стержня
-    var/cooling_timer = null // Ссылка на таймер остывания
-    var/image/current_rod_overlay // Хранит ссылку на созданный оврлей стержня
-    var/image/current_mag_overlay // Хранит ссылку на созданный оверлей магазина
-=======
     var/current_heat = 0 // Current temperature rod
     var/max_heat = 100 // Max heat container
     var/heat_per_shot = 5 // Heat behind shot
@@ -42,7 +31,6 @@
     var/rod_extended = FALSE // Flag condition rod
     var/cooling_timer = null // Link to timer
 
->>>>>>> master
 /obj/item/gun/ballistic/automatic/automatically_weapon/Initialize(mapload)
     . = ..()
     AddComponent(/datum/component/automatic_fire, 0.3 SECONDS)

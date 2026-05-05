@@ -9,9 +9,8 @@
     multiple_sprite_use_base = TRUE
     max_ammo = 30
 //Update magazine icons
-obj/item/ammo_box/magazine/m762_phaze/update_icon_state()
+/obj/item/ammo_box/magazine/m762_phaze/update_icon_state()
     if(stored_ammo.len <= 0)
         icon_state = "[base_icon_state]-0"
     else
         icon_state = "[base_icon_state]-[round(stored_ammo.len, 5)]"
->>>>>>> master
