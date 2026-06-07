@@ -87,12 +87,10 @@
 		add_overlay(rod_warning)
 
 	// ===== MAGAZINE =====
-	// Удаляем старый оверлей
 	if(mag_overlay_ref)
 		cut_overlay(mag_overlay_ref)
 		mag_overlay_ref = null
 	
-	// Получаем нужный спрайт (null = нет магазина)
 	var/desired_state = get_magazine_icon_state(magazine ? magazine.ammo_count(TRUE) : 0, magazine ? TRUE : FALSE)
 	
 	if(desired_state)
@@ -100,10 +98,9 @@
 		mag_overlay_ref.layer = FLOAT_LAYER
 		add_overlay(mag_overlay_ref)
 
-// Proc для получения иконки магазина
 /proc/get_magazine_icon_state(ammo, has_magazine)
 	if(!has_magazine)
-		return null  // нет магазина = нет оверлея
+		return null
 	if(ammo <= 0)
 		return "automatically_mag-0"
 	if(ammo >= 30)
