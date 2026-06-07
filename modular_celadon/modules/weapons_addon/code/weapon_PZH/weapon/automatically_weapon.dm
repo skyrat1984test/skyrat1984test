@@ -7,7 +7,7 @@
 	icon = 'modular_celadon/modules/weapons_addon/icons/phz.dmi'
 	icon_state = "automatically"
 	base_icon_state = "automatically"
-	inhand_icon_state = "automatically"
+	inhand_icon_state = "Femboy_porno"
 	w_class = WEIGHT_CLASS_BULKY
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m762_phaze
 	can_suppress = TRUE
@@ -16,11 +16,13 @@
 	actions_types = list()
 	bolt_type = BOLT_TYPE_LOCKING
 	projectile_damage_multiplier = 1.2
-	mag_display = FALSE  // ОТКЛЮЧАЕМ встроенную систему
+	mag_display = FALSE
 	mag_display_ammo = FALSE
 	empty_indicator = FALSE
 	fire_sound = 'modular_celadon/modules/weapons_addon/code/weapon_PZH/sound/bad-explosion.ogg'
 	fire_sound_volume = 100
+	righthand_file = 'modular_celadon/modules/weapons_addon/icons/pzh_righthand.dmi'
+	lefthand_file = 'modular_celadon/modules/weapons_addon/icons/pzh_lefthand.dmi'
 
 	// System heat
 	var/current_heat = 0
