@@ -11214,16 +11214,6 @@
 /obj/structure/bookcase/random,
 /turf/open/floor/wood,
 /area/centcom/interlink/dorm_rooms/room5)
-"lMK" = (
-/obj/machinery/door/airlock/centcom{
-	name = "CentCom Commanders"
-	},
-/obj/effect/mapping_helpers/airlock/access/any/admin/officer,
-/obj/effect/mapping_helpers/airlock/access/any/admin/captain,
-/obj/effect/mapping_helpers/airlock/access/any/admin/admiral,
-/obj/effect/mapping_helpers/apc/cut_AI_wire,
-/turf/open/floor/iron/smooth_large,
-/area/centcom/interlink)
 "lMY" = (
 /obj/structure/stone_tile/slab/cracked,
 /obj/structure/statue/bone/rib{
@@ -33146,7 +33136,7 @@ aqG
 aqG
 fgZ
 hfD
-lMK
+bWK
 ogq
 ubQ
 rhV

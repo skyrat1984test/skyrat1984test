@@ -469,6 +469,13 @@
 	// Apply mat datums
 	if(LAZYLEN(used_stack.mats_per_unit) && !(recipe.crafting_flags & CRAFT_NO_MATERIALS))
 		var/list/result_mats = used_stack.mats_per_unit.Copy()
+		// CELADON ADDITION START
+		if (isstack(created))
+			var/obj/item/stack/tile/created_as_tile = created
+			if (created_as_tile)
+				for(var/m in created_as_tile.mats_per_unit)
+					result_mats[m] = created_as_tile.mats_per_unit[m]
+		// CELADON ADDITION END
 		for(var/mat in recipe.removed_mats)
 			var/to_remove = recipe.removed_mats[mat]
 			var/datum/material/ref_mat = locate(mat) in result_mats

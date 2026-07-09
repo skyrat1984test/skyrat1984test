@@ -664,8 +664,8 @@ TGUI_MAX_CHUNK_COUNT 32
 ## Disables all tutorials if uncommented
 #DISABLE_TUTORIALS
 
-## Minimum time before a heretic can ascend, in minutes
-# MINIMUM_ASCENSION_TIME 3
+## Path from the config folder to the policy json
+POLICY_JSON_PATH policy.json
 
-## Max online when restart vote is available for players Celadon ADDITION
+## CELADON ADDITION: Max online when restart vote is available for players
 VOTE_RESTART_MAX_ONLINE 5

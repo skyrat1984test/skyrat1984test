@@ -375,7 +375,7 @@ function QuirkPage() {
       }
     }
     // NOVA EDIT START - Nova star quirks
-    if (quirk.nova_stars_only && !data.is_nova_star) {
+    if (data.nova_star_restrictions && quirk.nova_stars_only && !data.is_nova_star) {
       { /* Celadon REMOVAL return 'You need to be a Nova star to select this quirk, apply today!'; */ }
       return 'You need to be a Veteran to select this quirk, apply today!'; { /* Celadon ADDITION */ }
     }
@@ -493,10 +493,12 @@ function QuirkPage() {
           {/* Keep the CharacterPreview alive but "hidden", so that traits that affect appearance (e.g. Oversized) refresh rendering calculations immediately. */}
           <Stack.Item
             style={{
-              padding: '-1px',
-              width: 1,
-              height: 1,
-              opacity: 0.0,
+              position: 'absolute',
+              left: '-10000px',
+              top: '-10000px',
+              width: '1px',
+              height: '1px',
+              pointerEvents: 'none',
             }}
           >
             <CharacterPreview

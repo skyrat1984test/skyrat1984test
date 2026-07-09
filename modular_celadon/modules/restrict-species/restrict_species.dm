@@ -24,6 +24,11 @@
 	if (!species_type)
 		return FALSE // some broken mob?
 
-	if ("[species_type.type]" in restricted_species) // no inheritance will be supported here, so be careful
-		return FALSE
+	var/species_str = "[species_type.type]"
+	var/species_len = length(species_str)
+	for (var/typepath in restricted_species)
+		if (species_len < length(typepath))
+			continue
+		if (findtext(species_str, typepath))
+			return FALSE
 	return TRUE

@@ -107,6 +107,43 @@ GLOBAL_LIST_INIT(nttc_jobs, list(
 	JOB_SOLFED = "centcomradio",
 	JOB_SOLFED_LIASON = "centcomradio",
 	// NOVA EDIT ADDITION END
+	//CELADON ADD START - other
+	///tarkon
+	JOB_TARKON_CYBORG_ACCESS = "aiprivradio",
+	JOB_TARKON_VISITOR = "servradio",
+	JOB_TARKON_WORKER = "servradio",
+	JOB_TARKON_CARGO = "suppradio",
+	JOB_TARKON_GUARD = "secradio",
+	JOB_TARKON_MEDIC = "medradio",
+	JOB_TARKON_ENGINEER = "engradio",
+	JOB_TARKON_RESEARCHER = "sciradio",
+	JOB_TARKON_ENSIGN = "comradio",
+	JOB_TARKON_DIRECTOR = "comradio",
+	///oldstation
+	JOB_CHARLIE_SEC = "secradio",
+	JOB_CHARLIE_SCI = "sciradio",
+	JOB_CHARLIE_ROBO = "sciradio",
+	JOB_CHARLIE_ENG = "engradio",
+	JOB_CHARLIE_EQUIPMENT = "engradio",
+	JOB_CHARLIE_MEDIC = "medradio",
+	JOB_CHARLIE_CAPTAIN = "comradio",
+	///ds2
+	JOB_DS2_OPERATIVE = "servradio",
+	JOB_DS2_PRISONER = "monkey",
+	JOB_DS2_MINER = "suppradio",
+	JOB_DS2_STAFF = "servradio",
+	JOB_DS2_RESEARCHER = "sciradio",
+	JOB_DS2_ENGINEER = "engradio",
+	JOB_DS2_MEDIC = "medradio",
+	JOB_DS2_BRIG_OFFICER = "secradio",
+	JOB_DS2_MAA = "syndradio",
+	JOB_DS2_CL = "syndradio",
+	JOB_DS2_ADMIRAL = "syndradio",
+	//interdyne
+	JOB_INTERDYNE_SCIENTIST = "nicegreen",
+	JOB_INTERDYNE_MINER = "suppradio",
+	JOB_INTERDYNE_DECK_OFFICER = "nicegreen",
+	//CELADON ADD END - other
 ))
 /// List of highlight jobs (command, centcom, ert)
 GLOBAL_LIST_INIT(nttc_highlight_jobs, list(
@@ -151,6 +188,13 @@ GLOBAL_LIST_INIT(nttc_highlight_jobs, list(
 	JOB_NAVAL_REAR_ADMIRAL,
 	JOB_NAVAL_ADMIRAL,
 	JOB_NAVAL_FLEET_ADMIRAL,
-	//celadon command-centcom addiction
+	//CELADON command-centcom
 	JOB_NT_REP,
+	//CELADON ghost roles
+	JOB_CHARLIE_CAPTAIN,
+	JOB_TARKON_DIRECTOR,
+	JOB_DS2_MAA,
+	JOB_DS2_CL,
+	JOB_DS2_ADMIRAL,
+	JOB_INTERDYNE_DECK_OFFICER,
 ))

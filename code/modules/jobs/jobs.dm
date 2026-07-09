@@ -31,10 +31,12 @@ GLOBAL_LIST_INIT(exp_specialmap, list(
 		ROLE_BLACK_MARKET_DEALER,
 		ROLE_DS2,
 		ROLE_FREIGHTER_CREW,
-		ROLE_FREIGHTER_COMMAND, // celadon edit- freighter command job
 		ROLE_GHOST_CAFE,
 		ROLE_PORT_TARKON,
 		//NOVA EDIT Start - End Custom Ghost roles
+		// CELADON ADD START
+		ROLE_FREIGHTER_COMMAND,
+		// CELADON ADD END
 		), // Ghost roles
 	EXP_TYPE_GHOST = list() // dead people, observers
 ))

@@ -161,7 +161,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	//Radio freq/name display
 	var/freqpart = radio_freq ? "\[[get_radio_name(radio_freq, radio_freq_name)]\] " : ""
 	//Speaker name
-	var/namepart = speaker.get_message_voice(visible_name)
+	var/namepart = message_mods[MODE_SPEAKER_NAME_OVERRIDE] || speaker.get_message_voice(visible_name)
 	// Celadon ADDITION START
 	var/is_carbonspeaker = iscarbon(speaker)
 	var/speaker_source = is_carbonspeaker ? speaker : speaker.GetSource()

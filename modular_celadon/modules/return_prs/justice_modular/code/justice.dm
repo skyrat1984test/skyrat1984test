@@ -43,8 +43,6 @@
 	var/justice_state = JUSTICE_IDLE
 	/// Refs to our engines
 	var/list/obj/justice_engines = list()
-	/// UI arrow which directs justice mech during charge
-	var/atom/movable/screen/justice_charge_arrow/charge_arrow
 	/// Track turf to where justice wanna charge while drag right mouse button
 	var/turf/turf_to_charge
 	/// Maximum range of charge attack.
@@ -122,10 +120,9 @@
 	var/datum/hud/user_hud = he_drive.hud_used
 	if(!user_hud)
 		return
-	charge_arrow = new /atom/movable/screen/justice_charge_arrow(null, user_hud)
-	charge_arrow.screen_loc = around_player
+	var/atom/movable/screen/justice_charge_arrow/charge_arrow
+	charge_arrow = user_hud.add_screen_object(/atom/movable/screen/justice_charge_arrow, HUD_JUSTICE_ARROW, HUD_GROUP_INFO, update_screen = TRUE)
 	charge_arrow.icon_state = charge_arrow.inactive_icon
-	user_hud.infodisplay += charge_arrow
 	user_hud.show_hud(user_hud.hud_version)
 
 /obj/vehicle/sealed/mecha/justice/mob_exit(mob/exiter, silent, randomstep, forced)
@@ -144,7 +141,7 @@
 /obj/vehicle/sealed/mecha/justice/proc/null_arrow(datum/hud/user_hud)
 	if(isnull(user_hud))
 		return
-	user_hud.infodisplay -= charge_arrow
+	user_hud.remove_screen_object(HUD_JUSTICE_ARROW)
 	user_hud.show_hud(user_hud.hud_version)
 
 /obj/vehicle/sealed/mecha/justice/proc/driver_mousedown(client/source, atom/target, turf/location, control, params)
@@ -164,13 +161,16 @@
 		return
 
 	turf_to_charge = get_turf(target)
+	var/atom/movable/screen/justice_charge_arrow/charge_arrow = source?.mob?.hud_used?.screen_objects[HUD_JUSTICE_ARROW]
 	if(!isnull(turf_to_charge))
 		var/rotate_dir = get_dir(src, turf_to_charge)
-		animate(charge_arrow, transform = matrix(dir2angle(rotate_dir), MATRIX_ROTATE), 0.2 SECONDS)
+		if (charge_arrow)
+			animate(charge_arrow, transform = matrix(dir2angle(rotate_dir), MATRIX_ROTATE), 0.2 SECONDS)
 		dir = rotate_dir
 	else
 		set_charge_mouse_pointer(TRUE)
-	charge_arrow.icon_state = charge_arrow.active_icon
+	if (charge_arrow)
+		charge_arrow.icon_state = charge_arrow.active_icon
 	justice_state = JUSTICE_CHARGE
 	movedelay = MOVEDELAY_PRE_CHARGE
 	remember_strafe = strafe
@@ -198,7 +198,9 @@
 		return
 	set_charge_mouse_pointer()
 	var/rotate_dir = get_dir(src, turf_to_charge)
-	animate(charge_arrow, transform = matrix(dir2angle(rotate_dir), MATRIX_ROTATE), 0.2 SECONDS)
+	var/atom/movable/screen/justice_charge_arrow/charge_arrow = source?.mob?.hud_used?.screen_objects[HUD_JUSTICE_ARROW]
+	if (charge_arrow)
+		animate(charge_arrow, transform = matrix(dir2angle(rotate_dir), MATRIX_ROTATE), 0.2 SECONDS)
 	dir = rotate_dir
 
 /obj/vehicle/sealed/mecha/justice/proc/driver_mouseup(client/source, atom/target, turf/location, control, params)
@@ -213,7 +215,9 @@
 
 	UnregisterSignal(source, COMSIG_CLIENT_MOUSEUP)
 	UnregisterSignal(source, COMSIG_CLIENT_MOUSEDRAG)
-	charge_arrow.icon_state = charge_arrow.inactive_icon
+	var/atom/movable/screen/justice_charge_arrow/charge_arrow = source?.mob?.hud_used?.screen_objects[HUD_JUSTICE_ARROW]
+	if (charge_arrow)
+		charge_arrow.icon_state = charge_arrow.inactive_icon
 	strafe = remember_strafe
 	justice_state = JUSTICE_IDLE
 	movedelay = MOVEDELAY_IDLE
@@ -760,6 +764,7 @@
 	var/active_icon = "justice_charge_arrow"
 	/// Idle charge arrow icon
 	var/inactive_icon = ""
+	screen_loc = around_player
 
 #undef DISMEMBER_CHANCE_HIGH
 #undef DISMEMBER_CHANCE_LOW
