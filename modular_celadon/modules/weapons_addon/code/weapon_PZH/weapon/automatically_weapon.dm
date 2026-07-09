@@ -32,7 +32,7 @@
 	var/overheated = FALSE
 	var/rod_extended = FALSE
 	var/cooling_timer = null
-	
+
 	// Magazine overlay reference
 	var/image/mag_overlay_ref = null
 
@@ -53,10 +53,18 @@
 	cooling_timer = addtimer(CALLBACK(src, PROC_REF(cooling_loop)), 1 SECONDS, TIMER_LOOP|TIMER_STOPPABLE)
 
 /obj/item/gun/ballistic/automatic/automatically_weapon/proc/cooling_loop()
+	if(overheated)
+		return
 	if(current_heat <= 0)
+		stop_cooling_loop()
 		return
 	current_heat = max(0, current_heat - cool_down_per_second)
 	update_heat_state()
+
+/obj/item/gun/ballistic/automatic/automatically_weapon/proc/stop_cooling_loop()
+	if(cooling_timer)
+		deltimer(cooling_timer)
+		cooling_timer = null
 
 /obj/item/gun/ballistic/automatic/automatically_weapon/proc/update_heat_state()
 	if(overheated)
@@ -64,6 +72,7 @@
 	if(current_heat >= max_heat)
 		overheat()
 		return
+
 	var/new_rod_extended = (current_heat >= max_heat * 0.7)
 	if(rod_extended != new_rod_extended)
 		rod_extended = new_rod_extended
@@ -92,9 +101,9 @@
 	if(mag_overlay_ref)
 		cut_overlay(mag_overlay_ref)
 		mag_overlay_ref = null
-	
+
 	var/desired_state = get_magazine_icon_state(magazine ? magazine.ammo_count(TRUE) : 0, magazine ? TRUE : FALSE)
-	
+
 	if(desired_state)
 		mag_overlay_ref = image(icon, desired_state)
 		mag_overlay_ref.layer = FLOAT_LAYER
@@ -130,11 +139,15 @@
 	. = ..()
 	if(.)
 		current_heat += heat_per_shot
-		update_heat_state()
+		start_cooling_loop()
 		if(current_heat >= max_heat)
+			overheat()
 			to_chat(user, span_userdanger("[src] overheats! The cooling rod extends. Wait for cooldown!"))
 			addtimer(CALLBACK(src, PROC_REF(reset_overheat)), 5 SECONDS)
-	update_overlays()
+		else
+			update_heat_state()
+
+		update_overlays()
 
 /obj/item/gun/ballistic/automatic/automatically_weapon/proc/overheat()
 	overheated = TRUE
@@ -145,6 +158,7 @@
 	overheated = FALSE
 	current_heat = 0
 	rod_extended = FALSE
+	start_cooling_loop()
 	update_overlays()
 	if(ismob(loc))
 		to_chat(loc, span_notice("[src] has cooled down and is ready to fire again."))
