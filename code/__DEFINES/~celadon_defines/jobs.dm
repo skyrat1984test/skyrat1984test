@@ -8,6 +8,12 @@
 #define CHAPLAIN_RESTRICTED_QUIRKS "Unholy" = TRUE
 
 //jobs
+///station
+//Command
+#define JOB_BRIDGE_ASSISTANT_CELADON "Bridge Assistant"
+//Security
+#define JOB_SECURITY_MEDIC "Security Medic"
+#define JOB_SECURITY_OFFICER_SERVICE "Service Security Officer"
 ///ghost roles
 //tarkon
 #define JOB_TARKON_CYBORG_ACCESS "P-T Cyborg Access"
