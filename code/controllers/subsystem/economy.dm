@@ -18,6 +18,10 @@ SUBSYSTEM_DEF(economy)
 										ACCOUNT_INT = ACCOUNT_INT_NAME,
 										ACCOUNT_TI = ACCOUNT_TI_NAME,
 										// NOVA EDIT ADDITION END
+										//CELADON ADD START
+										ACCOUNT_CCD = ACCOUNT_CCD_NAME,
+										ACCOUNT_NTS = ACCOUNT_NTS_NAME,
+										//CELADON ADD END
 										ACCOUNT_SEC = ACCOUNT_SEC_NAME)
 	var/list/departmental_accounts = list()
 
@@ -75,8 +79,10 @@ SUBSYSTEM_DEF(economy)
 	if(time2text(world.timeofday, "DDD") == SUNDAY)
 		mail_blocked = TRUE
 	for(var/dep_id in department_accounts)
-		if(dep_id == ACCOUNT_CAR) //cargo starts with NOTHING
-			new /datum/bank_account/department(dep_id, 0, player_account = FALSE)
+//		if(dep_id == ACCOUNT_CAR) //cargo starts with NOTHING	//CELADON REMOVE START
+//			new /datum/bank_account/department(dep_id, 0, player_account = FALSE)	//CELADON REMOVE END
+		if(dep_id == ACCOUNT_NTS) //station budget starts with 5000 cr, CELADON ADD START
+			new /datum/bank_account/department(dep_id, 5000, player_account = FALSE)	//CELADON ADD END
 			continue
 		new /datum/bank_account/department(dep_id, budget_to_hand_out, player_account = FALSE)
 	return SS_INIT_SUCCESS
@@ -143,6 +149,8 @@ SUBSYSTEM_DEF(economy)
 		var/datum/bank_account/dept_account = get_dep_account(cached_processing[i])
 		if(!dept_account)
 			continue
+		if(dept_account.account_holder == ACCOUNT_NTS_NAME)	//CELADON ADD START - station account wont get moneys
+			continue	//CELADON ADD END
 		dept_account.adjust_money(MAX_GRANT_DPT)
 		if(MC_TICK_CHECK)
 			cached_processing.Cut(1, i + 1)

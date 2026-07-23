@@ -9458,10 +9458,8 @@
 	pixel_y = -5;
 	layer = 3.3
 	},
-/obj/machinery/computer/cargo/express{
-	dir = 4;
-	cargo_account = "CMD";
-	landingzone = /area/centcom/central_command_areas/supply/cargo_delivery
+/obj/machinery/computer/cargo/express/ghost/centcom{
+	dir = 4
 	},
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/supply)

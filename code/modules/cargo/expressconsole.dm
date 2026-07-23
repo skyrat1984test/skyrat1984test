@@ -169,6 +169,17 @@
 			else if(HAS_SILICON_ACCESS(user))
 				name = user.real_name
 				rank = "Silicon"
+			if(isliving(user) && (console_flag == CARGO_CONSOLE_NT_CENTCOM))	//CELADON ADD START
+				var/mob/living/living_user = user
+				var/obj/item/card/id/id_card = living_user.get_idcard(TRUE)
+				if(id_card)
+					var/list/access = id_card.GetAccess()
+					if(pack.access_view && !(pack.access_view in access))
+						say("[id_card] lacks the requisite access for this purchase.")
+						return
+				else if(pack.access_view)
+					say("No ID card detected.")
+					return	//CELADON ADD END
 			var/reason = ""
 			var/datum/supply_order/order = new(pack, name, rank, ckey, reason)
 			var/datum/bank_account/account = SSeconomy.get_dep_account(cargo_account)

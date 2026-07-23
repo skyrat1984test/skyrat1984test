@@ -129,7 +129,8 @@
 		return
 	//set payoff
 	var/payoff = 0
-	var/datum/bank_account/account = SSeconomy.get_dep_account(ACCOUNT_CAR)
+//	var/datum/bank_account/account = SSeconomy.get_dep_account(ACCOUNT_CAR)	//CELADON REMOVE
+	var/datum/bank_account/account = SSeconomy.get_dep_account(ACCOUNT_NTS)	//CELADON ADD
 	if(account)
 		payoff = max(PAYOFF_MIN, FLOOR(account.account_balance * 0.80, 1000))
 	var/datum/comm_message/threat = chosen_gang.generate_message(payoff)
@@ -149,7 +150,8 @@
 		priority_announce(chosen_gang.response_rejected, sender_override = chosen_gang.ship_name, color_override = chosen_gang.announcement_color)
 		return
 
-	var/datum/bank_account/plundered_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
+//	var/datum/bank_account/plundered_account = SSeconomy.get_dep_account(ACCOUNT_CAR)	//CELADON REMOVE
+	var/datum/bank_account/plundered_account = SSeconomy.get_dep_account(ACCOUNT_NTS)	//CELADON ADD
 	if(plundered_account)
 		if(plundered_account.adjust_money(-payoff))
 			chosen_gang.paid_off = TRUE

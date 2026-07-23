@@ -13,6 +13,9 @@
 /obj/item/card/id/advanced/prisoner
 	wildcard_expanded = null
 
+/obj/item/card/id/advanced/gold
+	wildcard_expanded = null
+
 /obj/item/card/id/advanced/centcom
 	wildcard_expanded = null
 

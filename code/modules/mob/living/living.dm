@@ -2966,7 +2966,8 @@ GLOBAL_LIST_EMPTY(fire_appearances)
  */
 /mob/living/proc/process_capture(ransom_price, black_market_price)
 	if(ransom_price > 0)
-		var/datum/bank_account/cargo_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
+//		var/datum/bank_account/cargo_account = SSeconomy.get_dep_account(ACCOUNT_CAR)	//CELADON REMOVE
+		var/datum/bank_account/cargo_account = SSeconomy.get_dep_account(ACCOUNT_NTS)	//CELADON ADD
 
 		if(cargo_account) //Just in case
 			cargo_account.adjust_money(-min(ransom_price, cargo_account.account_balance)) //Not so much, especially for competent cargo. Plus this can't be mass-triggered like it has been done with contractors

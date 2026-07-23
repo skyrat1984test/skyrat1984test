@@ -48,3 +48,7 @@
 
 /obj/machinery/computer/cargo/express/ghost/tarkon
 	landingzone = /area/ruin/space/has_grav/port_tarkon/cargo
+
+//vault change
+/obj/machinery/computer/bank_machine
+	account_department = ACCOUNT_NTS	//vault now basically use station account

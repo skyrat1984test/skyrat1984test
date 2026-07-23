@@ -67,13 +67,6 @@
 /obj/item/card/id/away/tarkonrobo
 	wildcard_slots = WILDCARD_LIMIT_AWAY
 
-//for custom bank machine
-/obj/item/card/id/departmental_budget/tarkon
-	budget_name = "Port Tarkon"
-	radio_channel = RADIO_CHANNEL_TARKON
-	departament_access = ACCESS_TARKON
-	away = TRUE
-
 //jobs code
 
 /datum/job/tarkon
