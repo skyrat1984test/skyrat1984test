@@ -24,3 +24,6 @@
 
 /datum/loadout_item/accessory/mercbadge
 	restricted_roles = list(ALL_JOBS_SEC)
+
+/datum/loadout_item/shoes/rax_armadyne_boots
+	restricted_roles = list(JOB_NT_REP, JOB_BLUESHIELD, JOB_CAPTAIN, JOB_HEAD_OF_SECURITY, JOB_VETERAN_ADVISOR, JOB_WARDEN)
