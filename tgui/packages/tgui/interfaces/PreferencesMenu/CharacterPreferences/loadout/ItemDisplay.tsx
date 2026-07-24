@@ -178,6 +178,11 @@ const FilterItemList = (items: LoadoutItem[]) => {
   const ckey = data.ckey;
 
   return items.filter((item: LoadoutItem) => {
+    // CELADON ADD START
+    if (item.is_disabled) {
+      return false;
+    }
+    // CELADON ADD END
     if (item.ckey_whitelist && item.ckey_whitelist.indexOf(ckey) === -1) {
       return true;// CELADON EDIT : original return false;
     }
@@ -190,11 +195,7 @@ const FilterItemList = (items: LoadoutItem[]) => {
     if (item.erp_item && !erp_pref) {
       return false;
     }
-    // CELADON ADD START
-    if (item.is_disabled) {
-      return false;
-    }
-    // CELADON ADD END
+
     return true;
   });
 };

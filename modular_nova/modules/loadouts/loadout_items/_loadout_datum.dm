@@ -155,6 +155,12 @@
 			message_client(client, target, "CKEY whitelist")
 		return FALSE
 	*/ //CELADON REMOVE END
+	//CELADON ADD START
+	if(is_disabled)
+		if(!visuals_only)
+			message_client(client, target, "this item is disabled globally")
+		return FALSE
+	//CELADON ADD END
 
 	return TRUE
 
