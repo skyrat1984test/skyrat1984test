@@ -27,3 +27,8 @@
 
 /datum/loadout_item/shoes/rax_armadyne_boots
 	restricted_roles = list(JOB_NT_REP, JOB_BLUESHIELD, JOB_CAPTAIN, JOB_HEAD_OF_SECURITY, JOB_VETERAN_ADVISOR, JOB_WARDEN)
+
+//modular fixes
+
+/obj/item/instrument/piano_synth/headphones/catear_headphone
+	icon_state = "catear_headphone" // was "/obj/item/instrument/piano_synth/headphones/catear_headphone"
