@@ -104,6 +104,7 @@
 			if(attacking_item.tool_behaviour == TOOL_WIRECUTTER)//TODO:Shock user if its on?
 				user.visible_message(span_notice("[user.name] removes some wires from the [name]."), \
 					span_notice("You remove some wires."))
+				var/obj/item/stack/cable_coil/cable = new (drop_location(), 1)
 				construction_state = PA_CONSTRUCTION_UNWIRED
 				did_something = TRUE
 			else if(attacking_item.tool_behaviour == TOOL_SCREWDRIVER)
