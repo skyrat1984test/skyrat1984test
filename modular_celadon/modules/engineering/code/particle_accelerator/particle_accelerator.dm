@@ -96,15 +96,13 @@
 			else if(istype(attacking_item, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/cable_coil = attacking_item
 				if(cable_coil.use(1))
-					user.visible_message(span_notice("[user.name] adds wires to the [name]."), \
-						span_notice("You add some wires."))
+					src.balloon_alert(user, "Wires added.")
 					construction_state = PA_CONSTRUCTION_PANEL_OPEN
 					did_something = TRUE
 		if(PA_CONSTRUCTION_PANEL_OPEN)
 			if(attacking_item.tool_behaviour == TOOL_WIRECUTTER)//TODO:Shock user if its on?
-				user.visible_message(span_notice("[user.name] removes some wires from the [name]."), \
-					span_notice("You remove some wires."))
 				var/obj/item/stack/cable_coil/cable = new (drop_location(), 1)
+				cable.balloon_alert(user, "Wires removed.")
 				construction_state = PA_CONSTRUCTION_UNWIRED
 				did_something = TRUE
 			else if(attacking_item.tool_behaviour == TOOL_SCREWDRIVER)
