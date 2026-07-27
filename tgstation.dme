@@ -9806,6 +9806,7 @@
 #include "modular_celadon\modules\localization_modular\ru_ai_laws\code\supplied.dm"
 #include "modular_celadon\modules\localization_modular\ru_ai_laws\code\zeroth.dm"
 #include "modular_celadon\modules\localization_modular\ru_letters_crayon\code\crayon.dm"
+#include "modular_celadon\modules\mobs\code\mouse.dm"
 #include "modular_celadon\modules\modsuits\code\_override.dm"
 #include "modular_celadon\modules\modsuits\code\autopin.dm"
 #include "modular_celadon\modules\modsuits\code\modsuit.dm"
