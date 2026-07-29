@@ -25,22 +25,40 @@
 	is_disabled = TRUE
 	erp_item = TRUE
 
+/datum/crafting_recipe/gay_pride_flag
+	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED	//now they wont appear untill someone(admin/debugger) will somehow learn this
+
 /datum/loadout_item/pocket_items/ace_pride_flag
 	is_disabled = TRUE
 	erp_item = TRUE
+
+/datum/crafting_recipe/ace_pride_flag
+	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED
 
 /datum/loadout_item/pocket_items/bi_pride_flag
 	is_disabled = TRUE
 	erp_item = TRUE
 
+/datum/crafting_recipe/bi_pride_flag
+	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED
+
 /datum/loadout_item/pocket_items/lesbian_pride_flag
 	is_disabled = TRUE
 	erp_item = TRUE
+
+/datum/crafting_recipe/lesbian_pride_flag
+	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED
 
 /datum/loadout_item/pocket_items/pan_pride_flag
 	is_disabled = TRUE
 	erp_item = TRUE
 
+/datum/crafting_recipe/pan_pride_flag
+	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED
+
 /datum/loadout_item/pocket_items/trans_pride_flag
 	is_disabled = TRUE
 	erp_item = TRUE
+
+/datum/crafting_recipe/trans_pride_flag
+	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED
