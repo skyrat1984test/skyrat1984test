@@ -1,4 +1,19 @@
 
+//hop
+/datum/job/head_of_personnel
+	antagonist_restricted = FALSE
+
+
+//clown
+/datum/job/clown
+	nova_stars_only = FALSE
+
+
+//mime
+/datum/job/mime
+	nova_stars_only = FALSE
+
+
 //chaplain
 /datum/job/chaplain
 	banned_quirks = list(CHAPLAIN_RESTRICTED_QUIRKS)

@@ -202,7 +202,8 @@
 	r_pocket = /obj/item/choice_beacon/blueshield
 	l_pocket = /obj/item/sensor_device/blueshield
 	backpack_contents = list(
-							/obj/item/storage/medkit/tactical/blueshield = 1,
+		/obj/item/storage/medkit/tactical/blueshield = 1,
+		/obj/item/choice_beacon/blueshield = 1,
 	)
 
 /datum/job/blueshield
