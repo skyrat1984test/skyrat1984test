@@ -11,10 +11,5 @@
 #define BOLT_NANOTRASEN_DEFENSE_NAME_CELADON "Nanotrasen-Bolt Personal Defense Coalition"
 #define VITEZSTVI_AMMO_NAME_CELADON "Vitezstvi Ammo & Weapon Accessories"
 
-//export
-#define EXPORT_MARKET_DS_INTERDYNE "ds_interdyne"
-#define EXPORT_MARKET_TARKON "tarkon"
-#define EXPORT_MARKET_BLACKMARKET "blackmarket" // some "fallback" market for very weird cases
-
 //keep updated with code\__DEFINES\~nova_defines\cargo.dm
 #define CARGO_CONSOLE_NT_CENTCOM		(1<<6)
