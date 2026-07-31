@@ -9630,6 +9630,7 @@
 #include "modular_celadon\modules\access_console_buttons\card.dm"
 #include "modular_celadon\modules\access_console_buttons\cards_ids.dm"
 #include "modular_celadon\modules\access_upgrader\code\upgrader.dm"
+#include "modular_celadon\modules\acid\code\acid.dm"
 #include "modular_celadon\modules\add_memory\general_custom_memory.dm"
 #include "modular_celadon\modules\add_memory\mind.dm"
 #include "modular_celadon\modules\add_memory\mob.dm"
