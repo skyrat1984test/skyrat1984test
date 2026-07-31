@@ -297,7 +297,8 @@
 		if (SEND_SIGNAL(thing, COMSIG_ATOM_STOMACH_DIGESTED, src, owner, seconds_per_tick) & COMPONENT_CANCEL_DIGESTION)
 			continue
 		var/acid_pwr = stomach_acid_power(thing, seconds_per_tick)
-		if (acid_pwr)
+//		if (acid_pwr)	//CELADON REMOVE
+		if (acid_pwr && !(thing.resistance_flags & (UNACIDABLE | INDESTRUCTIBLE)))	//CELADON ADD
 			thing.acid_act(acid_pwr, 10)
 
 		// If you have strong stomach you can eat glass, literally
