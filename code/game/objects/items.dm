@@ -1018,8 +1018,19 @@
 
 /obj/item/acid_melt()
 	if(!QDELETED(src))
-		var/turf/T = get_turf(src)
-		var/obj/effect/decal/cleanable/molten_object/MO = new(T)
+//		var/turf/T = get_turf(src)	//CELADON REMOVE START
+//		var/obj/effect/decal/cleanable/molten_object/MO = new(T)	//CELADON REMOVE END
+		var/obj/effect/decal/cleanable/molten_object/MO	//CELADON ADD START
+		if(HAS_TRAIT(src, TRAIT_IN_STOMACH))
+			var/mob/living/carbon/C = src.loc
+			var/obj/item/organ/stomach/stomach
+			if(iscarbon(C))
+				stomach = C.get_organ_by_type(/obj/item/organ/stomach)
+			MO = new(C)
+			stomach?.consume_thing(MO)
+		else
+			var/turf/TURF = get_turf(src)
+			MO = new(TURF)	//CELADON ADD END
 		MO.pixel_x = rand(-16,16)
 		MO.pixel_y = rand(-16,16)
 		MO.desc = "Looks like this was \an [src] some time ago."
