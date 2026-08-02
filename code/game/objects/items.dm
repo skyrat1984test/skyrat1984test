@@ -1021,12 +1021,19 @@
 //		var/turf/T = get_turf(src)	//CELADON REMOVE START
 //		var/obj/effect/decal/cleanable/molten_object/MO = new(T)	//CELADON REMOVE END
 		var/obj/effect/decal/cleanable/molten_object/MO	//CELADON ADD START
+		var/mob/living/carbon/C = src.loc
 		if(HAS_TRAIT(src, TRAIT_IN_STOMACH))
-			var/mob/living/carbon/C = src.loc
 			var/obj/item/organ/stomach/stomach
 			if(iscarbon(C))
 				stomach = C.get_organ_by_type(/obj/item/organ/stomach)
 			MO = new(C)
+			stomach?.consume_thing(MO)
+		else if(HAS_TRAIT(C, TRAIT_IN_STOMACH))
+			var/obj/item/organ/stomach/stomach
+			var/mob/living/carbon/C2 = C.loc
+			if(iscarbon(C2))
+				stomach = C2.get_organ_by_type(/obj/item/organ/stomach)
+			MO = new(C2)
 			stomach?.consume_thing(MO)
 		else
 			var/turf/TURF = get_turf(src)
