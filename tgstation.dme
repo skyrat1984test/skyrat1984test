@@ -9697,6 +9697,7 @@
 #include "modular_celadon\modules\cargo\code\put_a_donk_on_it_celadon.dm"
 #include "modular_celadon\modules\cargo\code\sol_defence_celadon.dm"
 #include "modular_celadon\modules\cargo\code\vitezstvi_ammo_celadon.dm"
+#include "modular_celadon\modules\cargo\code\bitrunning\headset.dm"
 #include "modular_celadon\modules\cargo\code\mining\machine_redemption.dm"
 #include "modular_celadon\modules\central_command\code\_access_override.dm"
 #include "modular_celadon\modules\central_command\code\_area.dm"

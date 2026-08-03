@@ -41,5 +41,7 @@ export const RADIO_PREFIXES = {
   // NOVA EDIT ADDITION END
   // //Celadon ADDITION START
   ':j ': 'Prison',
+  ':r ': 'Bitrun',
+  ':z ': 'Bitdefend',
   // //Celadon ADDITION END
 } as const;
