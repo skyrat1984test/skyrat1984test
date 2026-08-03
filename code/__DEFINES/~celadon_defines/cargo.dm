@@ -13,3 +13,15 @@
 
 //keep updated with code\__DEFINES\~nova_defines\cargo.dm
 #define CARGO_CONSOLE_NT_CENTCOM		(1<<6)
+
+//bitrunners
+#define RADIO_CHANNEL_BITRUN "Bitrun"
+#define RADIO_KEY_BITRUN "r"
+#define RADIO_TOKEN_BITRUN ":r"
+#define FREQ_BITRUN 1545
+
+//bitrun defenders
+#define RADIO_CHANNEL_BITDEFEND "Bitdefend"
+#define RADIO_KEY_BITDEFEND "z"
+#define RADIO_TOKEN_BITDEFEND ":z"
+#define FREQ_BITDEFEND 1547
