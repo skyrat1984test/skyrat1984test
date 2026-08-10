@@ -46,6 +46,9 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(show_player_panel, R_ADMIN, "Show Player Panel", mo
 		if(SSplayer_ranks.is_nova_star(player.client, admin_bypass = FALSE))
 			player_ranks += "Veteran" // Celadon EDIT, original: player_ranks += "Nova Star"
 
+		if(SSplayer_ranks.is_centcom(player.client, admin_bypass = FALSE))	//CELADON ADD START
+			player_ranks += "Centcom" 	//CELADON ADD END
+
 		body += "<br><br><b>Player Ranks: </b>[length(player_ranks) ? player_ranks.Join(", ") : "None"]"
 		// NOVA EDIT ADDITION END
 		body += "<br><br><b>CentCom Galactic Ban DB: </b> "
