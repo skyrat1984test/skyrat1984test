@@ -4442,6 +4442,14 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/control)
+"sj" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/closet/secure_closet/personal/wall{
+	pixel_y = 26
+	},
+/obj/effect/landmark/start/centcom/centcom_head_intern,
+/turf/open/floor/iron/dark,
+/area/centcom/central_command_areas/evacuation)
 "sk" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/structure/cable,
@@ -7054,6 +7062,7 @@
 /obj/structure/closet/secure_closet/personal/wall{
 	pixel_y = 25
 	},
+/obj/effect/landmark/start/centcom/centcom_intern,
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/evacuation)
 "Cp" = (
@@ -8980,6 +8989,7 @@
 /obj/structure/chair/comfy/brown{
 	dir = 4
 	},
+/obj/effect/landmark/start/centcom/centcom_commander,
 /turf/open/floor/iron/grimy,
 /area/centcom/central_command_areas/admin)
 "KG" = (
@@ -59557,7 +59567,7 @@ KB
 FE
 FE
 KB
-HL
+sj
 jn
 jn
 jn

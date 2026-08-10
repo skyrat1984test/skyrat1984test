@@ -19,6 +19,9 @@ Quartermaster=1,1
 
 Nanotrasen Consultant=1,1
 Blueshield=1,1
+CentCom Commander=4,4
+CentCom Head Intern=2,2
+CentCom Intern=5,5
 
 
 # Cargo
