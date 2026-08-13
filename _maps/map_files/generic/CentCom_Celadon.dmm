@@ -4447,7 +4447,7 @@
 /obj/structure/closet/secure_closet/personal/wall{
 	pixel_y = 26
 	},
-/obj/effect/landmark/start/centcom/centcom_head_intern,
+/obj/effect/landmark/start/centcom/intern,
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/evacuation)
 "sk" = (
@@ -6411,6 +6411,18 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/supply)
+"zM" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/machinery/button/door/indestructible{
+	id = "CCsec1";
+	name = "CC Shutter 1 Control";
+	pixel_y = 31;
+	req_access = list("cent_general")
+	},
+/turf/open/floor/iron,
+/area/centcom/central_command_areas/control)
 "zN" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/crate/goldcrate,
@@ -6801,6 +6813,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump{
 	dir = 8
 	},
+/obj/effect/landmark/start/centcom/captain,
 /turf/open/floor/iron/grimy,
 /area/centcom/central_command_areas/admin)
 "Bv" = (
@@ -7062,7 +7075,7 @@
 /obj/structure/closet/secure_closet/personal/wall{
 	pixel_y = 25
 	},
-/obj/effect/landmark/start/centcom/centcom_intern,
+/obj/effect/landmark/start/centcom/head_intern,
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/evacuation)
 "Cp" = (
@@ -8665,6 +8678,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
 	dir = 6
 	},
+/obj/effect/landmark/start/centcom/specops_officer,
 /turf/open/floor/iron/grimy,
 /area/centcom/central_command_areas/admin)
 "Jp" = (
@@ -8989,7 +9003,7 @@
 /obj/structure/chair/comfy/brown{
 	dir = 4
 	},
-/obj/effect/landmark/start/centcom/centcom_commander,
+/obj/effect/landmark/start/centcom/commander,
 /turf/open/floor/iron/grimy,
 /area/centcom/central_command_areas/admin)
 "KG" = (
@@ -55177,7 +55191,7 @@ Sv
 OR
 MM
 OR
-Ds
+zM
 ui
 cg
 GZ
