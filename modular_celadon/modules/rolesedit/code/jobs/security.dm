@@ -27,11 +27,6 @@
 		/obj/item/security_voucher = 1, // Security vouchers
 	)
 
-//detective
-/obj/structure/closet/secure_closet/detective/PopulateContents()
-	..()
-	new /obj/item/clothing/accessory/holster(src)
-
 //warden
 /datum/outfit/job/warden/pre_equip(mob/living/carbon/human/human, visualsOnly)
 	. = ..()

@@ -14,8 +14,7 @@
 #define PAYCHECK_CREW 50
 ///Paygrade for Heads of Staff.
 #define PAYCHECK_COMMAND 100
-///celadon add Paygrade limit, doesnt increase paycheck, this used in code\modules\economy\account.dm to limit paycheck
-#define PAYCHECK_LIMIT 250
+
 
 
 #define STATION_TARGET_BUFFER 25
@@ -84,6 +83,8 @@
 #define MARKET_TREND_STABLE 0
 
 #define MARKET_EVENT_PROBABILITY 8 //Probability of a market event firing, in percent. Fires once per material, every stock market tick.
+/// How much of the total value of a bounty cube does the player receive when the cube is exported?
+#define BOUNTY_CUT_STANDARD 0.3
 
 // Fair warning that these defines at present are not used in all tgui, static descriptions, or any varible names or comments
 /// The symbol for the default type of money used in the code.
@@ -99,3 +100,7 @@
 
 #define MONEY_MINING_SYMBOL "mp"
 #define MONEY_BITRUNNING_SYMBOL "np"
+
+//Mood event from minor slot events like winning/losing a few bits.
+#define SLOTS_MOOD_CATEGORY "slots"
+

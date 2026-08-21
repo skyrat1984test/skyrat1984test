@@ -276,3 +276,10 @@
 	backpack_contents = list(
 		/obj/item/modular_computer/pda/bridge_assistant_celadon = 1,
 	)
+
+//untill folder
+/datum/job/research_director
+	antagonist_restricted = FALSE
+
+/datum/job/quartermaster
+	antagonist_restricted = FALSE

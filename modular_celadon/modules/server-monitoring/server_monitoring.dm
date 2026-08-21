@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(server_monitoring)
 	if (adminstuff_list)
 		adminstuff_count = adminstuff_list.len
 	// STATION_TIME would be incorrect to use here, as it could result in something like 23:55:30... and so on when round is not started, but lobby loaded (because of SSticker.round_start_time), so instead using world.time (ticks)
-	var/round_time = "[world.time > MIDNIGHT_ROLLOVER ? "[round(world.time/MIDNIGHT_ROLLOVER)]:[gameTimestamp(wtime=world.time)]" : gameTimestamp(wtime=world.time)]"
+	var/round_time = "[world.time > MIDNIGHT_ROLLOVER ? "[round(world.time/MIDNIGHT_ROLLOVER)]:[round_timestamp(wtime=world.time)]" : round_timestamp(wtime=world.time)]"
 	if (!round_time)
 		round_time = "?"
 	var/list/current_ckeys = list()

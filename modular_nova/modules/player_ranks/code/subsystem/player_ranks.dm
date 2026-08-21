@@ -32,6 +32,7 @@ SUBSYSTEM_DEF(player_ranks)
 	load_donators()
 	load_mentors()
 	load_nova_stars()
+	load_centcom()	//CELADON ADD
 
 	return SS_INIT_SUCCESS
 
@@ -40,6 +41,7 @@ SUBSYSTEM_DEF(player_ranks)
 	QDEL_NULL(donator_controller)
 	QDEL_NULL(mentor_controller)
 	QDEL_NULL(nova_star_controller)
+	QDEL_NULL(centcom_controller)	//CELADON ADD
 	return ..()
 
 
@@ -254,6 +256,8 @@ SUBSYSTEM_DEF(player_ranks)
 	// Celadon ADDITION START
 	if(rank_title == "veteran")
 		return nova_star_controller
+	if(rank_title == centcom_controller.rank_title)
+		return centcom_controller
 	// Celadon ADDITION END
 	CRASH("Invalid player_rank_controller \"[rank_title || "*null*"]\" used in get_controller_for_group()!")
 

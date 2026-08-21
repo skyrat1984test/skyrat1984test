@@ -7631,6 +7631,7 @@
 /obj/item/mod/control/pre_equipped/nuclear/chameleon,
 /obj/item/tank/jetpack/harness,
 /obj/item/folder/syndicate/red/secretformula,
+/obj/item/book/granter/crafting_recipe/blood_worm_recipe,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/interdyne_planetary_base/main/vault)
 "WZ" = (

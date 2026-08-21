@@ -199,6 +199,8 @@
 #define ACCESS_BLOODCULT "bloodcult"
 /// HUNTERS
 #define ACCESS_HUNTER "hunter"
+/// HERETIC
+#define ACCESS_HERETIC "heretic"
 
 /// - - - MISC - - -
 	// These don't really fit anywhere else
@@ -416,7 +418,10 @@
 	ACCESS_AWAY_SCIENCE, \
 	ACCESS_AWAY_SEC, \
 	ACCESS_AWAY_SUPPLY, \
-)
+	ACCESS_TARKON, \
+	ACCESS_TARKON_COMMAND, \
+	ACCESS_TARKON_DIRECTOR, \
+)	//Celadon Edit - added Access tarkon,t commmand, t director
 
 /// Weird internal Cult access that prevents non-cult from using their doors.  Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_SPECIAL)
 #define CULT_ACCESS list( \
@@ -554,7 +559,6 @@
 #define REGION_CENTCOM "Central Command"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all CENTCOM_ACCESS regional accesses.
 #define REGION_ACCESS_CENTCOM CENTCOM_ACCESS
-
 
 /**
  * A list of PDA paths that can be painted as well as the regional heads which should be able to paint them.

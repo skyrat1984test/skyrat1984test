@@ -47,10 +47,15 @@
 	register_context()
 
 	// CELADON ADDITION START
-	if(centcom)
-		pda_types = SSid_access.station_pda_templates.Copy()
-		card_trims = SSid_access.centcom_job_templates.Copy()
-		return
+	if(special_painter)
+		switch(special_painter)
+			if(PDA_PAINTER_CENTCOM)
+				pda_types = SSid_access.station_pda_templates.Copy()
+				card_trims = SSid_access.centcom_job_templates.Copy()
+				return
+			if(PDA_PAINTER_TARKON)
+				card_trims = SSid_access.tarkon_job_templates.Copy()
+				return
 	// CELADON ADDITION END
 
 	if(!target_dept)

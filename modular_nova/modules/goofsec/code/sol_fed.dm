@@ -183,7 +183,8 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 			cop.grant_language(/datum/language/common, source = LANGUAGE_SPAWNER)
 
 			if(cops_to_send == /datum/antagonist/ert/request_911/atmos) // charge for atmos techs
-				var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_CAR)
+//				var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_CAR)	//CELADON REMOVE
+				var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_NTS)	//CELADON ADD
 				station_balance?.adjust_money(GLOB.solfed_tech_charge)
 			else
 				var/obj/item/gangster_cellphone/phone = new() // biggest gang in the city
@@ -310,25 +311,6 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	antag_hud_name = "hud_spacecop"
 	suicide_cry = "FOR THE SOL FEDERATION!!"
 	var/department = "Some stupid shit"
-
-/datum/antagonist/ert/request_911/apply_innate_effects(mob/living/mob_override)
-	..()
-	var/mob/living/M = mob_override || owner.current
-	if(M.hud_used)
-		var/datum/hud/H = M.hud_used
-		var/atom/movable/screen/wanted/giving_wanted_lvl = new /atom/movable/screen/wanted(null, H)
-		H.wanted_lvl = giving_wanted_lvl
-		H.infodisplay += giving_wanted_lvl
-		H.mymob.client.screen += giving_wanted_lvl
-
-
-/datum/antagonist/ert/request_911/remove_innate_effects(mob/living/mob_override)
-	var/mob/living/M = mob_override || owner.current
-	if(M.hud_used)
-		var/datum/hud/H = M.hud_used
-		H.infodisplay -= H.wanted_lvl
-		QDEL_NULL(H.wanted_lvl)
-	..()
 
 /datum/antagonist/ert/request_911/greet()
 	var/missiondesc =  ""
@@ -676,7 +658,8 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		if(current_votes >= amount_of_responders * 0.5)
 			GLOB.solfed_responder_info[type_of_callers][SOLFED_DECLARED] = TRUE
 			if(fine_station)
-				var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_CAR)
+//				var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_CAR)	//CELADON REMOVE
+				var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_NTS)	//CELADON ADD
 				station_balance?.adjust_money(SOLFED_FINE_AMOUNT) // paying for the gas to drive all the fuckin' way out to the frontier
 
 			priority_announce(announcement_message, announcement_source, 'sound/effects/families_police.ogg', has_important_message = TRUE, color_override = "yellow")

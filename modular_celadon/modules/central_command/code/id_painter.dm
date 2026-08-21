@@ -1,6 +1,6 @@
 /obj/machinery/pdapainter
-	var/centcom = FALSE
+	var/special_painter
 
 /obj/machinery/pdapainter/centcom
 	name = "\improper CentCom Tablet & ID Painter"
-	centcom = TRUE
+	special_painter = PDA_PAINTER_CENTCOM

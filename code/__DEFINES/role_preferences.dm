@@ -15,6 +15,7 @@
 #define ROLE_HERETIC "Heretic"
 #define ROLE_MALF "Malf AI"
 #define ROLE_OPERATIVE "Operative"
+#define ROLE_REV_HEAD "Head Revolutionary"
 #define ROLE_TRAITOR "Traitor"
 #define ROLE_WIZARD "Wizard"
 #define ROLE_SPY "Spy"
@@ -38,7 +39,6 @@
 #define ROLE_OPERATIVE_MIDROUND "Operative (Midround)"
 #define ROLE_CLOWN_OPERATIVE_MIDROUND "Clown Operative (Midround)"
 #define ROLE_PARADOX_CLONE "Paradox Clone"
-#define ROLE_REV_HEAD "Head Revolutionary"
 #define ROLE_SLEEPER_AGENT "Syndicate Sleeper Agent"
 #define ROLE_SPACE_DRAGON "Space Dragon"
 #define ROLE_SPIDER "Spider"
@@ -123,7 +123,6 @@
 #define ROLE_GHOST_CAFE "Ghost Cafe Visitor"
 #define ROLE_BLACK_MARKET_DEALER "Black Market Dealer"
 #define ROLE_FREIGHTER_CREW "Freighter Crew"
-#define ROLE_FREIGHTER_COMMAND "Freighter Chief" // celadon edit- freighter command job
 #define ROLE_PORT_TARKON "Port Tarkon Survivor"
 // NOVA EDIT ADDITION END
 #define ROLE_LIFEBRINGER "Lifebringer"

@@ -1,5 +1,5 @@
 // !!! IMPORTANT !!!
-// When changing anything in this file, also change it in modular_celadon\modules\hacking_secure_storages\secure.dm
+// When changing anything in this file, also change it in hacking_secure_storages\secure.dm
 
 /obj/structure/closet/secure_closet
 	var/broken_lvl = 0

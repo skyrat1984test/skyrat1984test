@@ -8,7 +8,7 @@
 	var/list/presentmins = adm["present"]
 	var/list/afkmins = adm["afk"]
 
-	var/round_time = "[world.time > MIDNIGHT_ROLLOVER ? "[round(world.time/MIDNIGHT_ROLLOVER)]:[gameTimestamp(wtime=world.time)]" : gameTimestamp(wtime=world.time)]"
+	var/round_time = "[world.time > MIDNIGHT_ROLLOVER ? "[round(world.time/MIDNIGHT_ROLLOVER)]:[round_timestamp(wtime=world.time)]" : round_timestamp(wtime=world.time)]"
 	if (!round_time)
 		round_time = "?"
 
@@ -91,7 +91,7 @@
 	.["mode"] = "dynamic"
 	.["respawn"] = config ? !!CONFIG_GET(flag/allow_respawn) : FALSE
 	.["enter"] = !LAZYACCESS(SSlag_switch.measures, DISABLE_NON_OBSJOBS)
-	.["roundtime"] = gameTimestamp()
+	.["roundtime"] = round_timestamp()
 	.["listed"] = GLOB.hub_visibility
 	.["players"] = GLOB.clients.len
 	.["ticker_state"] = SSticker.current_state

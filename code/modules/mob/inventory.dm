@@ -354,6 +354,12 @@
 	if(!(to_drop.item_flags & NO_PIXEL_RANDOM_DROP))
 		x_offset += rand(-6, 6)
 		y_offset += rand(-6, 6)
+	if(HAS_TRAIT(src, TRAIT_IN_STOMACH))	//CELADON ADD START
+		var/mob/living/carbon/C = src.loc
+		if(iscarbon(C))
+			var/obj/item/organ/stomach/stomach = C.get_organ_by_type(/obj/item/organ/stomach)
+			stomach?.consume_thing(to_drop)
+			return to_drop	//CELADON ADD END
 	if(!transfer_item_to_turf(to_drop, drop_location(), x_offset, y_offset, force, silent, invdrop))
 		return
 
@@ -679,9 +685,13 @@
 			dropItemToGround(held_items[i])
 	held_items.len = amt
 
-	if(hud_used)
-		hud_used.build_hand_slots()
-		hud_used.healthdoll.update_body_zones()
+	if(!hud_used)
+		return
+
+	hud_used.build_hand_slots(update_hud = TRUE)
+	var/atom/movable/screen/healthdoll/doll = hud_used.screen_objects[HUD_MOB_HEALTHDOLL]
+	if(doll)
+		doll.update_body_zones()
 
 //GetAllContents that is reasonable and not stupid
 /mob/living/proc/get_all_gear(equipment_flags = INCLUDE_ACCESSORIES|INCLUDE_PROSTHETICS, recursive = TRUE)

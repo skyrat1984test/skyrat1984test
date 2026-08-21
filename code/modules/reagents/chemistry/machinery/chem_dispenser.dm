@@ -355,7 +355,8 @@
 					if(!to_dispense)
 						say("The container is full!")
 						return
-					if(!cell.use(to_dispense * power_cost))
+//					if(!cell.use(to_dispense * power_cost))	//CELADON DISABLE
+					if(!cell.use(get_final_power_cost(reagent, to_dispense, power_cost)))	//CELADON ADD
 						say("Not enough energy to complete operation!")
 						return
 					beaker.add_hiddenprint(ui.user)
@@ -405,7 +406,8 @@
 					var/to_dispense = max(0, min(dispense_amount, holder.maximum_volume - holder.total_volume))
 					if(!to_dispense)
 						continue
-					if(!cell.use(to_dispense * power_cost))
+//					if(!cell.use(to_dispense * power_cost))	//CELADON DISABLE
+					if(!cell.use(get_final_power_cost(reagent, to_dispense, power_cost)))	//CELADON ADD
 						say("Not enough energy to complete operation!")
 						return
 					beaker.add_hiddenprint(ui.user)
@@ -480,15 +482,10 @@
 	return ITEM_INTERACT_BLOCKING
 
 /obj/machinery/chem_dispenser/screwdriver_act(mob/living/user, obj/item/tool)
-	if(default_deconstruction_screwdriver(user, icon_state, icon_state, tool))
-		update_appearance()
-		return ITEM_INTERACT_SUCCESS
-	return ITEM_INTERACT_BLOCKING
+	return default_deconstruction_screwdriver(user, tool)
 
 /obj/machinery/chem_dispenser/crowbar_act(mob/living/user, obj/item/tool)
-	if(default_deconstruction_crowbar(tool))
-		return ITEM_INTERACT_SUCCESS
-	return ITEM_INTERACT_BLOCKING
+	return default_deconstruction_crowbar(user, tool)
 
 /obj/machinery/chem_dispenser/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!tool.can_insert_container(user, src))

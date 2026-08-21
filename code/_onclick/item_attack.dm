@@ -77,6 +77,15 @@
 	// At this point it means the attack was "successful", or at least unhandled, in some way
 	// This can mean nothing happened, this can mean the target took damage, etc.
 
+	// CELADON REMOVAL START
+	// if(user.client && isitem(target))
+	// 	var/mob/living/living_user = astype(user)
+	// 	if(isnull(user.get_inactive_held_item() && living_user?.num_hands > 1))
+	// 		SStutorials.suggest_tutorial(user, /datum/tutorial/switch_hands, modifiers)
+	// 	else
+	// 		SStutorials.suggest_tutorial(user, /datum/tutorial/drop, modifiers)
+	// CELADON REMOVAL END
+
 	return TRUE
 
 /// Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.

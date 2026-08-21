@@ -30,12 +30,6 @@
 	greyscale_colors = CIRCUIT_COLOR_SECURITY
 	build_path = /obj/machinery/computer/id_upgrader/ds
 
-/obj/item/card/id/departmental_budget/ds2
-	budget_name = "Syndicate - Deep Space"
-	radio_channel = RADIO_CHANNEL_INTERDYNE //before i add ds2 freq
-	departament_access = ACCESS_SYNDICATE_DS
-	away = TRUE
-
 //modsuits override
 
 /datum/armor/mod_theme_syndicate/deepspace

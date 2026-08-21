@@ -83,6 +83,40 @@
 #define ACCESS_SYNDICATE_IP "syndicate_interdyne"
 #define ACCESS_SYNDICATE_OFFICER "syndicate_officer"
 
+//tarkon
+#define ACCESS_TARKON_COMMAND "tarkon_command"
+#define ACCESS_TARKON_DIRECTOR "tarkon_director"
+
+#define REGION_TARKON "Tarkon"
+
+#define TARKON_ACCESS list( \
+	ACCESS_TARKON, \
+	ACCESS_TARKON_COMMAND, \
+)
+
+#define REGION_ACCESS_TARKON TARKON_ACCESS
+
+#define REGION_TARKON_DIRECTOR "Tarkon&Nanotrasen"
+
+#define TARKON_DIRECTOR_ACCESS list( \
+	ACCESS_TARKON_DIRECTOR, \
+	ACCESS_AWAY_GENERAL, \
+	ACCESS_AWAY_SCIENCE, \
+	ACCESS_MEDICAL, \
+	ACCESS_ROBOTICS, \
+	ACCESS_WEAPONS, \
+)
+
+#define REGION_ACCESS_TARKON_DIRECTOR TARKON_DIRECTOR_ACCESS
+
+#define REGION_AREA_TARKON list( \
+	REGION_TARKON, \
+	REGION_TARKON_DIRECTOR, \
+)
+
+#define REGION_ALL_TARKON "Tarkon"
+#define REGION_ACCESS_ALL_TARKON TARKON_ACCESS + TARKON_DIRECTOR_ACCESS
+
 //wildcard
 ///able to get almost all station and 8 syndicate accesses
 #define WILDCARD_LIMIT_CHAMELEON_ID list( \
@@ -103,3 +137,19 @@
 	WILDCARD_NAME_SYNDICATE = list(limit = -1, usage = list()), \
 	WILDCARD_NAME_AWAY = list(limit = -1, usage = list()) \
 )
+
+/// away
+#define WILDCARD_LIMIT_AWAY list( \
+	WILDCARD_NAME_COMMON = list(limit = 6, usage = list()), \
+	WILDCARD_NAME_AWAY = list(limit = 6, usage = list()) \
+)
+
+// away command
+#define WILDCARD_LIMIT_AWAY_COMMAND list( \
+	WILDCARD_NAME_COMMON = list(limit = 10, usage = list()), \
+	WILDCARD_NAME_COMMAND = list(limit = 4, usage = list()), \
+	WILDCARD_NAME_AWAY = list(limit = 8, usage = list()) \
+)
+//pda painter
+#define PDA_PAINTER_CENTCOM (1<<0)
+#define PDA_PAINTER_TARKON (1<<1)

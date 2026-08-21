@@ -176,11 +176,13 @@
 		return JOB_UNAVAILABLE_LANGUAGE
 	if(job.has_banned_quirk(client.prefs))
 		return JOB_UNAVAILABLE_QUIRK
-	if(job.nova_stars_only && !SSplayer_ranks.is_nova_star(client))
+	if(GLOB.nova_star_restrictions && job.nova_stars_only && !SSplayer_ranks.is_nova_star(client))
 		return JOB_NOT_NOVA_STAR
 	if(job.has_banned_species(client.prefs))
 		return JOB_UNAVAILABLE_SPECIES
 	//NOVA EDIT END
+	if((job.centcom_job && !SSplayer_ranks.is_centcom(client)))	//CELADON ADD START
+		return JOB_UNAVAILABLE_GENERIC	//CELADON ADD END
 	return JOB_AVAILABLE
 
 
