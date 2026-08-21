@@ -5,7 +5,7 @@
 
 SUBSYSTEM_DEF(changelog_highlight)
 	name = "Changelog Highlight Celadon"
-	flags = SS_NO_FIRE
+	ss_flags = SS_NO_FIRE
 	runlevels = (RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME)
 	init_stage = INITSTAGE_FIRST
 	var/static/list/changelog_items_celadon = list()

@@ -48,7 +48,8 @@
 
 /datum/random_ship_event/hc_police/on_accept()
 	// Give the station a cash bonus for accepting the voluntary inspection
-	var/datum/bank_account/bonused_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
+//	var/datum/bank_account/bonused_account = SSeconomy.get_dep_account(ACCOUNT_CAR)	//CELADON REMOVE
+	var/datum/bank_account/bonused_account = SSeconomy.get_dep_account(ACCOUNT_NTS)	//CELADON ADD
 	if(bonused_account)
 		bonused_account.adjust_money(10000)
 		// Successfully added the bonus

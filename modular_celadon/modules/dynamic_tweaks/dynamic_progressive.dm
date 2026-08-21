@@ -88,7 +88,7 @@ SUBSYSTEM_DEF(progressive_dynamic)
 	var/threat_increase = calculate_threat_increase(time_in_deciseconds, overall_power)
 
 	generated_threat_by_progressive_dynamic += threat_increase
-	log_dynamic("[gameTimestamp()]: [PROGRESSIVE_DYNAMIC_TITLE]: automatically increasing threat by [threat_increase] (secs = [sec_amount], heads = [head_amount], crew = [crew_amount])")
+	log_dynamic("[round_timestamp()]: [PROGRESSIVE_DYNAMIC_TITLE]: automatically increasing threat by [threat_increase] (secs = [sec_amount], heads = [head_amount], crew = [crew_amount])")
 	update_tier()
 	update_fire_state()
 
@@ -119,7 +119,7 @@ SUBSYSTEM_DEF(progressive_dynamic)
 		return
 
 	SSdynamic.set_tier(found_new_tier)
-	log_dynamic("[gameTimestamp()]: [PROGRESSIVE_DYNAMIC_TITLE]: automatically increasing DYNAMIC LEVEL, reached [generated_threat_by_progressive_dynamic] of required [required_threat_to_raise_actual] threat")
+	log_dynamic("[round_timestamp()]: [PROGRESSIVE_DYNAMIC_TITLE]: automatically increasing DYNAMIC LEVEL, reached [generated_threat_by_progressive_dynamic] of required [required_threat_to_raise_actual] threat")
 	if (!announce_to_station_when_tier_increased)
 		return
 	var/report = "<b><i>Nanotrasen Department of Intelligence Threat Advisory, Spinward Sector, TCD [time2text(world.realtime, "DDD, MMM DD")], [CURRENT_STATION_YEAR]:</i></b><hr>"
@@ -182,8 +182,8 @@ SUBSYSTEM_DEF(progressive_dynamic)
 
 /datum/controller/subsystem/progressive_dynamic/proc/update_fire_state()
 	if (SSdynamic?.current_tier?.tier < max_dynamic_tier_to_stop && !can_fire)
-		log_dynamic("[gameTimestamp()]: [PROGRESSIVE_DYNAMIC_TITLE]: Enabling progressive threat updates")
+		log_dynamic("[round_timestamp()]: [PROGRESSIVE_DYNAMIC_TITLE]: Enabling progressive threat updates")
 		can_fire = TRUE
 	else if (SSdynamic?.current_tier?.tier >= max_dynamic_tier_to_stop && can_fire)
-		log_dynamic("[gameTimestamp()]: [PROGRESSIVE_DYNAMIC_TITLE]: Disabling progressive threat updates due to reached tier [SSdynamic.current_tier.tier] out of allowed [max_dynamic_tier_to_stop]")
+		log_dynamic("[round_timestamp()]: [PROGRESSIVE_DYNAMIC_TITLE]: Disabling progressive threat updates due to reached tier [SSdynamic.current_tier.tier] out of allowed [max_dynamic_tier_to_stop]")
 		can_fire = FALSE // Temporaly disable fire(), admins still can VV generated_threat_by_progressive_dynamic or max_generated_threat (look at vv_edit_var)

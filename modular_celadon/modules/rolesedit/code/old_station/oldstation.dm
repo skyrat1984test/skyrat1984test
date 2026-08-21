@@ -1,31 +1,36 @@
 //  old trims overrides and new one's
 
 /datum/id_trim/away/old/sci
+	assignment = JOB_CHARLIE_SCI
 	sechud_icon_state = SECHUD_OLD_SCI
 
 /datum/id_trim/away/old/robo
+	assignment = JOB_CHARLIE_ROBO
 	sechud_icon_state = SECHUD_ROBOTICIST
 
 /datum/id_trim/away/old/equipment
+	assignment = JOB_CHARLIE_EQUIPMENT
 	sechud_icon_state = SECHUD_STATION_ENGINEER
 
 /datum/id_trim/away/old/eng
+	assignment = JOB_CHARLIE_ENG
 	sechud_icon_state = SECHUD_OLD_ENG
 
 /datum/id_trim/away/old/sec
+	assignment = JOB_CHARLIE_SEC
 	sechud_icon_state = SECHUD_OLD_SEC
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_SEC, ACCESS_WEAPONS)
 
 // new medic
 /datum/id_trim/away/old/med
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_MEDICAL)
-	assignment = "Charlie Station Medic"
+	assignment = JOB_CHARLIE_MEDIC
 	sechud_icon_state = SECHUD_OLD_MED
 
 // charlie captain's spare(cool id card with (probably)all necessary access
 /datum/id_trim/away/old/captain
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_MAINTENANCE, ACCESS_AWAY_SUPPLY, ACCESS_AWAY_MEDICAL, ACCESS_AWAY_SCIENCE, ACCESS_AWAY_ENGINEERING, ACCESS_AWAY_SEC, ACCESS_AWAY_COMMAND, ACCESS_ENGINEERING, ACCESS_ENGINE_EQUIP, ACCESS_CONSTRUCTION, ACCESS_ROBOTICS, ACCESS_ORDNANCE, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_SECURITY, ACCESS_COMMAND, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
-	assignment = "Charlie Station Captain"
+	assignment = JOB_CHARLIE_CAPTAIN
 	sechud_icon_state = SECHUD_OLD_CAPTAIN
 	big_pointer = TRUE
 
@@ -412,7 +417,7 @@
 	name = "Prototype skillchip"
 	desc = "Endorsed by the Nanotrasen Navy."
 	complexity = 2
-	abstract_parent_type = /obj/item/skillchip/job/oldstation
+	abstract_type  = /obj/item/skillchip/job/oldstation
 
 /obj/item/skillchip/job/oldstation/engineering
 	name = "Prototype Engineering C0-RCU-1T-N11H5M2R1 skillchip"

@@ -5,8 +5,8 @@
 	var/emote_key
 
 /datum/keybinding/emote/proc/link_to_emote(datum/emote/faketype)
-	hotkey_keys = list("Unbound")
-	classic_keys = list("Unbound")
+	hotkey_keys = list(UNBOUND_KEY)
+	classic_keys = list(UNBOUND_KEY)
 	emote_key = initial(faketype.key)
 	name = faketype.name // Celadon EDIT, original: name = initial(faketype.key)
 	if (!name) // Celadon ADDITION

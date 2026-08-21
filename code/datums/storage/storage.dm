@@ -499,7 +499,8 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		to_insert.forceMove(real_location)
 	if(get(real_location, /mob) != user)
 		to_insert.do_pickup_animation(real_location, user)
-	item_insertion_feedback(user, to_insert, override)
+	if (messages)
+		item_insertion_feedback(user, to_insert, override)
 	parent.update_appearance()
 	return TRUE
 
@@ -597,7 +598,8 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
  * * silent - if TRUE, we won't play any exit sounds
  * * visual_updates - if TRUE we update storage views & animate parent appearance
  */
-/datum/storage/proc/attempt_remove(obj/item/thing, atom/remove_to_loc, silent = FALSE, visual_updates = TRUE)
+// /datum/storage/proc/attempt_remove(obj/item/thing, atom/remove_to_loc, silent = FALSE, visual_updates = TRUE)	//CELADON REMOVE
+/datum/storage/proc/attempt_remove(obj/item/thing, atom/remove_to_loc, silent = FALSE, visual_updates = TRUE, by_user = FALSE)	//CELADON ADD
 	SHOULD_NOT_SLEEP(TRUE)
 
 	if(istype(thing) && ismob(parent.loc))
@@ -607,6 +609,18 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	if(remove_to_loc)
 		reset_item(thing)
 		thing.forceMove(remove_to_loc)
+		if(!by_user)	//CELADON ADD START
+			var/mob/living/carbon/C = src.parent.loc
+			var/obj/item/organ/stomach/stomach
+			if(HAS_TRAIT(parent, TRAIT_IN_STOMACH))
+				if(iscarbon(C))
+					stomach = C.get_organ_by_type(/obj/item/organ/stomach)
+					stomach?.consume_thing(thing)
+			else if(HAS_TRAIT(C, TRAIT_IN_STOMACH))
+				var/mob/living/carbon/C2 = C.loc
+				if(iscarbon(C2))
+					stomach = C2.get_organ_by_type(/obj/item/organ/stomach)
+					stomach?.consume_thing(thing)	//CELADON ADD END
 
 		if(!silent && do_rustle)
 			if(remove_rustle_sound)
@@ -652,7 +666,8 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
  * * silent - if TRUE, we won't play any exit sounds
  */
 /datum/storage/proc/remove_single(mob/removing, obj/item/thing, atom/remove_to_loc, silent = FALSE)
-	return attempt_remove(thing, remove_to_loc, silent)
+//	return attempt_remove(thing, remove_to_loc, silent)	//CELADON REMOVE
+	return attempt_remove(thing, remove_to_loc, silent, by_user=TRUE)	//CELADON ADD
 
 /**
  * Removes only a specific type of item from our storage
@@ -718,9 +733,12 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	SIGNAL_HANDLER
 
 	for(var/mob/user as anything in is_using)
-		user.hud_used?.open_containers -= gone
+		if (user.hud_used?.screen_groups[HUD_GROUP_STORAGE])
+			user.hud_used.screen_groups[HUD_GROUP_STORAGE] -= gone
+
 		if(!user.client)
 			continue
+
 		var/client/cuser = user.client
 		cuser.screen -= gone
 
@@ -1086,9 +1104,10 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 
 	LAZYOR(is_using, to_show)
 
-	to_show.hud_used.open_containers |= storage_interfaces[to_show].list_ui_elements()
+	// Don't add to screen_objects as that one gets its contents actually deleted
+	LAZYOR(to_show.hud_used.screen_groups[HUD_GROUP_STORAGE], storage_interfaces[to_show].list_ui_elements())
 	to_show.client.screen |= storage_interfaces[to_show].list_ui_elements()
-	to_show.hud_used.open_containers |= real_location.contents
+	LAZYOR(to_show.hud_used.screen_groups[HUD_GROUP_STORAGE], real_location.contents)
 	to_show.client.screen |= real_location.contents
 
 	return TRUE
@@ -1116,9 +1135,9 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	if(to_hide.client)
 		to_hide.client.screen -= storage_interfaces[to_hide].list_ui_elements()
 		to_hide.client.screen -= real_location.contents
-	if(to_hide.hud_used)
-		to_hide.hud_used.open_containers -= storage_interfaces[to_hide].list_ui_elements()
-		to_hide.hud_used.open_containers -=  real_location.contents
+	if(to_hide.hud_used.screen_groups[HUD_GROUP_STORAGE])
+		to_hide.hud_used.screen_groups[HUD_GROUP_STORAGE] -= storage_interfaces[to_hide].list_ui_elements()
+		to_hide.hud_used.screen_groups[HUD_GROUP_STORAGE] -= real_location.contents
 	QDEL_NULL(storage_interfaces[to_hide])
 	storage_interfaces -= to_hide
 
@@ -1149,7 +1168,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	var/additional_row = (!(adjusted_contents % screen_max_columns) && adjusted_contents < max_slots)
 
 	var/columns = clamp(max_slots, 1, screen_max_columns)
-	var/rows = clamp(CEILING(adjusted_contents / columns, 1) + additional_row, 1, screen_max_rows)
+	var/rows = clamp(ceil(adjusted_contents / columns) + additional_row, 1, screen_max_rows)
 
 	for (var/mob/ui_user as anything in storage_interfaces)
 		if (isnull(storage_interfaces[ui_user]))

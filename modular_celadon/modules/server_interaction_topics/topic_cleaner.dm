@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(topic_access_cleaner)
 	name = "Topic Utility"
-	flags = SS_BACKGROUND | SS_NO_INIT
+	ss_flags = SS_BACKGROUND | SS_NO_INIT
 	wait = 5 SECONDS // should be enough to mitigate possible DDOS burst and clear IP from memory
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 

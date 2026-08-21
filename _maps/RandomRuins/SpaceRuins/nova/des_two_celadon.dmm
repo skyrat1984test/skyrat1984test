@@ -3202,7 +3202,7 @@
 /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_digger{
 	pixel_y = -3
 	},
-/obj/item/circuitboard/machine/xenoarch_machine/xenoarch_recoverer,
+/obj/item/storage/belt/utility/xenoarch/full,
 /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_scanner{
 	pixel_y = 3
 	},
@@ -7446,15 +7446,9 @@
 "Ht" = (
 /obj/effect/turf_decal/trimline/dark_red/line,
 /obj/effect/turf_decal/trimline/dark_red/mid_joiner,
-/obj/machinery/computer/shuttle{
+/obj/machinery/computer/shuttle/interdyne_cargo{
 	desc = "A shuttle terminal which allows a connection to the DS-2 forward base's supply shuttle.";
-	icon_keyboard = "syndie_key";
-	icon_screen = "syndishuttle";
-	light_color = "#FA8282";
-	name = "syndicate cargo shuttle terminal";
-	possible_destinations = "interdyne_cargo_home;interdyne_cargo_away;interdyne_cargo_custom";
-	req_access = list("syndicate");
-	shuttleId = "interdyne_cargo"
+	name = "syndicate cargo shuttle terminal"
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/nova/des_two/bridge)
@@ -9711,9 +9705,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/delivery,
-/obj/effect/mapping_helpers/airlock/unres/delayed{
-	dir = 8
-	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/nova/des_two/cargo)
 "Sc" = (

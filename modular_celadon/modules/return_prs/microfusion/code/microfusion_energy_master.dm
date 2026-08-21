@@ -274,14 +274,6 @@
 	remove_attachment(to_remove, user)
 	return CLICK_ACTION_SUCCESS
 
-/obj/item/gun/microfusion/proc/remove_all_attachments()
-	if(attachments.len)
-		for(var/obj/item/microfusion_gun_attachment/attachment in attachments)
-			attachment.remove_attachment(src)
-			attachment.forceMove(get_turf(src))
-			attachments -= attachment
-		update_appearance()
-
 /obj/item/gun/microfusion/examine(mob/user)
 	. = ..()
 	if(attachments.len)

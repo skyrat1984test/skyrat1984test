@@ -221,6 +221,7 @@
 	RegisterSignal(thing, COMSIG_MOVABLE_MOVED, PROC_REF(content_moved))
 	RegisterSignal(thing, COMSIG_QDELETING, PROC_REF(content_deleted))
 	LAZYADD(stomach_contents, thing)
+	ADD_TRAIT(thing, TRAIT_IN_STOMACH, src)	//CELADON ADD
 	thing.forceMove(owner || src) // We assert that if we have no owner, we will not be nullspaced
 	return TRUE
 
@@ -233,6 +234,8 @@
 	if(source.loc == src || source.loc == owner) // not in us? out da list then
 		return
 	LAZYREMOVE(stomach_contents, source)
+	if(HAS_TRAIT(source, TRAIT_IN_STOMACH))	//CELADON ADD START
+		REMOVE_TRAIT(source, TRAIT_IN_STOMACH, src)	//CELADON ADD END
 	UnregisterSignal(source, list(COMSIG_MOVABLE_MOVED, COMSIG_QDELETING))
 
 /obj/item/organ/stomach/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
@@ -297,8 +300,10 @@
 		if (SEND_SIGNAL(thing, COMSIG_ATOM_STOMACH_DIGESTED, src, owner, seconds_per_tick) & COMPONENT_CANCEL_DIGESTION)
 			continue
 		var/acid_pwr = stomach_acid_power(thing, seconds_per_tick)
-		if (acid_pwr)
-			thing.acid_act(acid_pwr, 10)
+//		if (acid_pwr)	//CELADON REMOVE START
+//			thing.acid_act(acid_pwr, 10)	//CELADON REMOVE END
+		if (acid_pwr && !(thing.resistance_flags & (ACID_PROOF | INDESTRUCTIBLE)))	//CELADON ADD START
+			thing.acid_act(acid_pwr, 10, FALSE)	//CELADON ADD END
 
 		// If you have strong stomach you can eat glass, literally
 		if (!isitem(thing) || HAS_TRAIT(owner, TRAIT_STRONG_STOMACH))
@@ -393,7 +398,9 @@
 
 /obj/item/organ/stomach/on_mob_insert(mob/living/carbon/receiver, special, movement_flags)
 	. = ..()
-	receiver.hud_used?.hunger?.update_hunger_bar()
+	var/atom/movable/screen/hunger/hunger_bar = receiver.hud_used?.screen_objects[HUD_MOB_HUNGER]
+	if(hunger_bar)
+		hunger_bar.update_hunger_bar()
 	RegisterSignal(receiver, COMSIG_CARBON_VOMITED, PROC_REF(on_vomit))
 	RegisterSignal(receiver, COMSIG_HUMAN_GOT_PUNCHED, PROC_REF(on_punched))
 
@@ -402,7 +409,9 @@
 		var/mob/living/carbon/human/human_owner = stomach_owner
 		human_owner.clear_alert(ALERT_DISGUST)
 		human_owner.clear_mood_event("disgust")
-	stomach_owner.hud_used?.hunger?.update_hunger_bar()
+	var/atom/movable/screen/hunger/hunger_bar = stomach_owner.hud_used?.screen_objects[HUD_MOB_HUNGER]
+	if(hunger_bar)
+		hunger_bar.update_hunger_bar()
 	UnregisterSignal(stomach_owner, list(COMSIG_CARBON_VOMITED, COMSIG_HUMAN_GOT_PUNCHED))
 	return ..()
 
@@ -472,8 +481,8 @@
 /obj/item/organ/stomach/apply_organ_damage(damage_amount, maximum, required_organ_flag)
 	. = ..()
 	// So after a while, or a bunch of stomach meds, even a cut stomach can recover
-	if (. < 0)
-		cut_open_damage = max(0, cut_open_damage + .)
+	if (. > 0)
+		cut_open_damage = max(0, cut_open_damage - .)
 
 /obj/item/organ/stomach/examine(mob/user)
 	. = ..()

@@ -47,7 +47,7 @@
 	new /obj/item/clothing/head/wizard/tape/fake(src)
 	new /obj/item/clothing/suit/wizrobe/tape/fake(src)
 	new /obj/item/staff/tape(src)
-	new /obj/item/stack/sticky_tape(src)
+	new /obj/item/stack/medical/wrap/sticky_tape(src)
 
 /obj/item/storage/box/fakesyndiesuit
 	name = "boxed replica space suit and helmet"
@@ -185,13 +185,6 @@
 /obj/item/storage/box/holy/student/PopulateContents()
 	new /obj/item/clothing/suit/chaplainsuit/armor/studentuni(src)
 	new /obj/item/clothing/head/helmet/chaplain/cage(src)
-
-/obj/item/storage/box/holy/techpriest
-	name = "Techpriest Kit"
-	typepath_for_preview = /obj/item/clothing/suit/hooded/techpriest
-
-/obj/item/storage/box/holy/techpriest/PopulateContents()
-	new /obj/item/clothing/suit/hooded/chaplainsuit/techchapel(src)
 
 /obj/item/storage/box/holy/sentinel
 	name = "Stone Sentinel Kit"

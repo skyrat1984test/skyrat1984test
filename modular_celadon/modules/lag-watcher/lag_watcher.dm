@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(lag_watcher)
 	name = "Lag Watcher"
-	flags = SS_NO_INIT
+	ss_flags = SS_NO_INIT
 	wait = 1 SECONDS // Default wait time before fire() invoked
 
 	var/default_threshold_ms = 800

@@ -55,7 +55,7 @@
 /obj/item/storage/medkit/tactical/blueshield/PopulateContents()
 	if(empty)
 		return
-	new /obj/item/stack/medical/gauze(src)
+	new /obj/item/stack/medical/wrap/gauze(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 	new /obj/item/stack/medical/ointment(src)
 	new /obj/item/stack/medical/synth_repair(src)
@@ -202,7 +202,8 @@
 	r_pocket = /obj/item/choice_beacon/blueshield
 	l_pocket = /obj/item/sensor_device/blueshield
 	backpack_contents = list(
-							/obj/item/storage/medkit/tactical/blueshield = 1,
+		/obj/item/storage/medkit/tactical/blueshield = 1,
+		/obj/item/choice_beacon/blueshield = 1,
 	)
 
 /datum/job/blueshield
@@ -288,7 +289,7 @@
 		ACCESS_CENT_GENERAL,
 	)
 	template_access = list(
-		ACCESS_CENT_LIVING,
+		ACCESS_CHANGE_IDS,
 		ACCESS_CAPTAIN,
 	)
 	job = /datum/job/blueshield

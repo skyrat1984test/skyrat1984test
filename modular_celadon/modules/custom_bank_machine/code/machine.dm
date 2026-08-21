@@ -1,33 +1,68 @@
 // card code
 /obj/item/card/id/departmental_budget
 	var/budget_name = " Civilian Budget"
-	var/radio_channel = RADIO_CHANNEL_COMMON
+	var/radio_channel = RADIO_CHANNEL_COMMAND
 	var/departament_access = ACCESS_CAPTAIN
 	var/away = FALSE
 
 /obj/item/card/id/departmental_budget/car
 	budget_name = "Cargo Budget"
-	departament_access = ACCESS_VAULT
+	departament_access = ACCESS_QM
+	radio_channel = RADIO_CHANNEL_SUPPLY
 
 /obj/item/card/id/departmental_budget/med
 	budget_name = "Medical Budget"
 	departament_access = ACCESS_CMO
+	radio_channel = RADIO_CHANNEL_MEDICAL
 
 /obj/item/card/id/departmental_budget/eng
 	budget_name = "Engineering Budget"
 	departament_access = ACCESS_CE
+	radio_channel = RADIO_CHANNEL_ENGINEERING
 
 /obj/item/card/id/departmental_budget/sci
 	budget_name = "Scientific Budget"
 	departament_access = ACCESS_RD
+	radio_channel = RADIO_CHANNEL_SCIENCE
 
 /obj/item/card/id/departmental_budget/srv
 	budget_name = "Service Budget"
 	departament_access = ACCESS_HOP
+	radio_channel = RADIO_CHANNEL_SERVICE
 
 /obj/item/card/id/departmental_budget/sec
 	budget_name = "Defense Budget"
 	departament_access = ACCESS_HOS
+	radio_channel = RADIO_CHANNEL_SECURITY
+
+/obj/item/card/id/departmental_budget/com
+	budget_name = "Command Budget"
+	departament_access = ACCESS_CENT_GENERAL
+	radio_channel = RADIO_CHANNEL_CENTCOM
+
+/obj/item/card/id/departmental_budget/centcom
+	budget_name = "Central Command Budget"
+	departament_access = ACCESS_CENT_OFFICER
+	radio_channel = RADIO_CHANNEL_CENTCOM
+
+//away
+/obj/item/card/id/departmental_budget/interdyne
+	budget_name = "Interdyne Pharmaceuticals"
+	radio_channel = RADIO_CHANNEL_INTERDYNE
+	departament_access = ACCESS_SYNDICATE_IP
+	away = TRUE
+
+/obj/item/card/id/departmental_budget/ds2
+	budget_name = "Syndicate - Deep Space"
+	radio_channel = RADIO_CHANNEL_INTERDYNE //before i add ds2 freq
+	departament_access = ACCESS_SYNDICATE_DS
+	away = TRUE
+
+/obj/item/card/id/departmental_budget/tarkon
+	budget_name = "Port Tarkon"
+	radio_channel = RADIO_CHANNEL_TARKON
+	departament_access = ACCESS_TARKON
+	away = TRUE
 
 //circut and console code
 /obj/item/circuitboard/computer/custom_bankmachine
@@ -151,6 +186,11 @@
 		var/area/A = get_area(loc)
 		var/message = "[unauthorized ? "Unauthorized c" : "C"]redit withdrawal underway in [initial(A.name)][unauthorized ? "!!" : "..."]"
 		radio.talk_into(src, message, radio_channel)
+		if(!away && unauthorized)
+			if(radio_channel != RADIO_CHANNEL_SECURITY)
+				radio.talk_into(src, message, RADIO_CHANNEL_SECURITY)
+			if(radio_channel != RADIO_CHANNEL_COMMAND)
+				radio.talk_into(src, message, RADIO_CHANNEL_COMMAND)
 		next_warning = world.time + minimum_time_between_warnings
 
 /obj/machinery/computer/custom_bank_machine/ui_interact(mob/user, datum/tgui/ui)
@@ -204,8 +244,9 @@
 /obj/machinery/computer/custom_bank_machine/proc/end_siphon()
 	siphoning = FALSE
 	unauthorized = FALSE
-	if(syphoning_credits > 0)
-		new /obj/item/holochip(drop_location(), syphoning_credits)
+	var/atom/droploc = drop_location()
+	for(var/cash_typepath in credits_to_spacecash(syphoning_credits))
+		new cash_typepath(droploc)
 	syphoning_credits = 0
 
 /obj/machinery/computer/custom_bank_machine/proc/start_siphon(mob/living/carbon/user)

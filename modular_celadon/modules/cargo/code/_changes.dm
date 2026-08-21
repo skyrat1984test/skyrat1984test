@@ -202,6 +202,10 @@
 	crate_type = /obj/structure/closet/crate/secure/centcom
 	access_any = list(ACCESS_HOP, ACCESS_HOS, ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
 
+/datum/supply_pack/companies/medical/equipment/afad // return removed afad
+	contains = list(/obj/item/gun/medbeam/afad)
+	cost = CARGO_CRATE_VALUE * 2.5
+
 //nova disable
 /datum/supply_pack/companies
 	order_flags = ORDER_SPECIAL | ORDER_DANGEROUS

@@ -16,9 +16,11 @@
 		/obj/item/gun/energy/laser/captain,
 		/obj/item/gun/energy/e_gun/hos,
 		// NOVA EDIT ADDITION START
+		/obj/item/gun/energy/e_gun, // covers e_gun/mini, e_gun/hos,
+		/obj/item/gun/energy/laser, // covers laser/captain, laser/thermal
 		/obj/item/ammo_box/magazine, // Just magazine, because the sec-belt can hold these aswell
 		/obj/item/ammo_box/speedloader,
 		/obj/item/gun/energy/recharge/kinetic_accelerator/variant/glock,
+		/obj/item/gun/ballistic/rifle/c96,
 		// NOVA EDIT ADDITION END
-		/obj/item/gun/energy/e_gun/advtaser, // Celadon ADDITION
 	))

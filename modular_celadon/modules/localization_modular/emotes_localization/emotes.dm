@@ -586,3 +586,48 @@
 	name = "свистеть"
 	message = "свист%(ит,ят)%."
 	message_mime = "бесшумно свист%(ит,ят)%"
+
+// code\modules\mob\living\silicon\robot\emote.dm
+
+/datum/emote/silicon/boop
+	name = "буп"
+	message = "бупает."
+
+/datum/emote/silicon/beep
+	name = "бип"
+	message = "бипает."
+	message_param = "бипает в сторону %t."
+
+/datum/emote/silicon/buzz
+	name = "звук жужжания"
+	message = "жужжит."
+	message_param = "жужжит в сторону %t."
+
+/datum/emote/silicon/buzz2
+	name = "раздражённо жужжать"
+	message = "раздражённо жужжит."
+
+/datum/emote/silicon/chime
+	name = "звенеть"
+	message = "звенит."
+
+/datum/emote/silicon/honk
+	name = "хонкать"
+	message = "хонкает."
+
+/datum/emote/silicon/ping
+	name = "сигналить"
+	message = "сигналит."
+	message_param = "сигналит в сторону %t."
+
+/datum/emote/silicon/sad
+	name = "звук грустного тромбона"
+	message = "играет грустный тромбон..."
+
+/datum/emote/silicon/warn
+	name = "звук предупреждения"
+	message = "издает предупреждающий звук!"
+
+/datum/emote/silicon/slowclap
+	name = "звук хлопания"
+	message = "проигрывает звук хлопания."

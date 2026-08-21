@@ -82,6 +82,7 @@
 	// Celadon EDIT
 	payload_string = replacetext(payload_string, "\[Host\]", "\[<font color='#1ABC9C'>Хост</font>\]")
 	payload_string = replacetext(payload_string, "\[Head Admin\]", "\[<font color='#f02f2f'>Главный Администратор</font>\]")
+	payload_string = replacetext(payload_string, "\[Senior Admin\]", "\[<font color='#ad0000ff'>Старший Администратор</font>\]")
 	payload_string = replacetext(payload_string, "\[Admin\]",	"\[<font color='#ee8f29'>Админ</font>\]")
 	payload_string = replacetext(payload_string, "\[Trial Admin\]", "\[<font color='#cfc000'>Триал Админ</font>\]")
 	payload_string = replacetext(payload_string, "\[Moderator\]",	"\[<font color='#9db430'>Модератор</font>\]")

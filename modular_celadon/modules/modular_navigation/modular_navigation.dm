@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(extended_navigation)
 	name = "Extended Navigation"
-	flags = SS_NO_FIRE
+	ss_flags = SS_NO_FIRE
 	dependencies = list(/datum/controller/subsystem/machines, /datum/controller/subsystem/atoms)
 
 /datum/controller/subsystem/extended_navigation/Initialize() // god bless, contractor now can find where is BRIG MAINTENANCE...

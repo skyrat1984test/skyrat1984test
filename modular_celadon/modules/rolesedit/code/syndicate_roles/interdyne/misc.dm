@@ -18,13 +18,6 @@
 	greyscale_colors = CIRCUIT_COLOR_SECURITY
 	build_path = /obj/machinery/computer/id_upgrader/ip
 
-//bank card code
-/obj/item/card/id/departmental_budget/interdyne
-	budget_name = "Interdyne Pharmaceuticals"
-	radio_channel = RADIO_CHANNEL_INTERDYNE
-	departament_access = ACCESS_SYNDICATE_IP
-	away = TRUE
-
 //mod
 /obj/item/mod/control/pre_equipped/interdyne/nerfed
 	locked = 1

@@ -7,7 +7,8 @@
 	// code\modules\mob\emote.dm
 	var/static/list/mob_emotes = list(
 		/mob/proc/emote_flip,
-		/mob/proc/emote_spin
+		/mob/proc/emote_spin,
+		// CELADON REMOVAL /mob/proc/emote_rolld20,
 	)
 	all_emotes += mob_emotes
 
@@ -209,10 +210,23 @@
 	// 	/mob/living/proc/emote_warn,
 	// 	/mob/living/proc/emote_slowclap
 	// )
-	// all_emotes += synth_emotes
-	// var/static/list/allowed_species_synth = list(
-	// 	/datum/species/synthetic
-	// )
+	// CELADON ADDITION START
+	var/static/list/synth_emotes = list(
+		/mob/living/proc/emote_boop,
+		/mob/living/proc/emote_buzz,
+		/mob/living/proc/emote_beep,
+		/mob/living/proc/emote_chime,
+		/mob/living/proc/emote_honk,
+		/mob/living/proc/emote_ping,
+		/mob/living/proc/emote_sad,
+		/mob/living/proc/emote_warn,
+		/mob/living/proc/emote_slowclap
+	)
+	// CELADON ADDITION END
+	all_emotes += synth_emotes
+	var/static/list/allowed_species_synth = list(
+		/datum/species/synthetic
+	)
 	// Celadon REMOVAL END
 
 	// modular_nova\modules\emotes\code\additionalemotes\overlay_emote.dm
@@ -253,10 +267,10 @@
 			// available_emotes += nova_living_emotes
 			// available_emotes += nova_living_emotes_overlay
 			// available_emotes += /mob/living/proc/emote_mark_turf
-			// Checking if should apply Synth emotes
-			// if(HAS_TRAIT(src, TRAIT_SILICON_EMOTES_ALLOWED))
-			// 	available_emotes += synth_emotes
 			// Celadon REMOVAL END
+			// Checking if should apply Synth emotes
+			if(HAS_TRAIT(src, TRAIT_SILICON_EMOTES_ALLOWED))
+				available_emotes += synth_emotes
 		if(iscarbon(src))
 			available_emotes += carbon_emotes
 		if(ishuman(src))
@@ -291,6 +305,12 @@
 	set category = "Emotes"
 	usr.emote("spin", intentional = TRUE)
 
+// CELADON REMOVAL START
+// /mob/proc/emote_rolld20()
+	// set name = "| Roll 20 |"
+	// set category = "Emotes"
+	// usr.emote("rolld20", intentional = TRUE)
+// CELADON REMOVAL END
 // code\modules\mob\living\emote.dm
 
 /mob/living/proc/emote_blush()
@@ -1065,21 +1085,22 @@ Celadon REMOVAL END */
 	set name = "< No >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("no", intentional = TRUE)
-
+CELADON REMOVAL END*/
 /mob/living/proc/emote_boop()
-	set name = "< Boop >" // Celadon EDIT
+	set name = "< Буп >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("boop", intentional = TRUE)
 
 /mob/living/proc/emote_buzz()
-	set name = "< Buzz >" // Celadon EDIT
+	set name = "< Звук жужжания >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("buzz", intentional = TRUE)
 
 /mob/living/proc/emote_beep()
-	set name = "< Beep >" // Celadon EDIT
+	set name = "< Бип >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("beep", intentional = TRUE)
+/* CELADON REMOVAL START
 
 /mob/living/proc/emote_beep2()
 	set name = "< Beep Sharply >" // Celadon EDIT
@@ -1091,36 +1112,37 @@ Celadon REMOVAL END */
 	set category = "Emotes"
 	usr.emote("buzz2", intentional = TRUE)
 
+CELADON REMOVAL END*/
+
 /mob/living/proc/emote_chime()
-	set name = "< Chime >" // Celadon EDIT
+	set name = "< Звенеть >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("chime", intentional = TRUE)
 
 /mob/living/proc/emote_honk()
-	set name = "< Honk >" // Celadon EDIT
+	set name = "< Хонк >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("honk", intentional = TRUE)
 
 /mob/living/proc/emote_ping()
-	set name = "< Ping >" // Celadon EDIT
+	set name = "< Сигналить >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("ping", intentional = TRUE)
 
 /mob/living/proc/emote_sad()
-	set name = "< Sad >" // Celadon EDIT
+	set name = "< Звук грустного тромбона >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("sad", intentional = TRUE)
 
 /mob/living/proc/emote_warn()
-	set name = "< Warn >" // Celadon EDIT
+	set name = "< Звук предупреждения >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("warn", intentional = TRUE)
 
 /mob/living/proc/emote_slowclap()
-	set name = "< Slow Clap >" // Celadon EDIT
+	set name = "< Звук хлопания >" // Celadon EDIT
 	set category = "Emotes"
 	usr.emote("slowclap", intentional = TRUE)
-Celadon REMOVAL END */
 
 /* Celadon REMOVAL START
 

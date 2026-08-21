@@ -355,7 +355,7 @@
 	order_flags = ORDER_GOODY
 	crate_type = /obj/structure/closet/crate/large/import
 
-/datum/supply_pack/armament/generate(atom/A, datum/bank_account/paying_account)
+/datum/supply_pack/armament/generate(atom/A, datum/bank_account/paying_account, crate_override)
 	. = ..()
 	var/datum/bank_account/cargo_dep = SSeconomy.get_dep_account(ACCOUNT_CAR)
 	cargo_dep.account_balance += round(cost * CARGO_CUT)

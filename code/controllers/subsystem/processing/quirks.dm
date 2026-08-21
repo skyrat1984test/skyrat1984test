@@ -26,7 +26,8 @@ GLOBAL_LIST_INIT_TYPED(quirk_blacklist, /list/datum/quirk, list(
 	list(/datum/quirk/settler, /datum/quirk/freerunning),
 	list(/datum/quirk/numb, /datum/quirk/selfaware),
 	list(/datum/quirk/empath, /datum/quirk/evil),
-	//NOVA EDIT ADDITION BEGIN
+	list(/datum/quirk/keen_nose, /datum/quirk/item_quirk/anosmia),
+	// NOVA EDIT ADDITION BEGIN
 	list(/datum/quirk/equipping/nerve_staple, /datum/quirk/nonviolent),
 	list(/datum/quirk/equipping/nerve_staple, /datum/quirk/item_quirk/nearsighted),
 	list(/datum/quirk/no_guns, /datum/quirk/poor_aim),
@@ -44,7 +45,8 @@ GLOBAL_LIST_INIT_TYPED(quirk_blacklist, /list/datum/quirk, list(
 	list(/datum/quirk/adapted_lungs, /datum/quirk/item_quirk/breather/water_breather, /datum/quirk/item_quirk/breather/nitrogen_breather, /datum/quirk/item_quirk/breather/plasma_breather),
 	list(/datum/quirk/psionic_dampener, /datum/quirk/telepathic),
 	list(/datum/quirk/hydrophobia, /datum/quirk/item_quirk/breather/water_breather),
-	//NOVA EDIT ADDITION END
+	list(/datum/quirk/unblinking, /datum/quirk/item_quirk/fluoride_stare),
+	// NOVA EDIT ADDITION END
 ))
 
 GLOBAL_LIST_INIT(quirk_string_blacklist, generate_quirk_string_blacklist())
@@ -63,7 +65,7 @@ GLOBAL_LIST_INIT(quirk_string_blacklist, generate_quirk_string_blacklist())
 // - Quirk datums are stored and hold different effects, as well as being a vector for applying trait string
 PROCESSING_SUBSYSTEM_DEF(quirks)
 	name = "Quirks"
-	flags = SS_BACKGROUND
+	ss_flags = SS_BACKGROUND
 	runlevels = RUNLEVEL_GAME
 	wait = 1 SECONDS
 
@@ -87,13 +89,10 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 
 /datum/controller/subsystem/processing/quirks/proc/SetupQuirks()
 	// Sort by Positive, Negative, Neutral; and then by name
-	var/list/quirk_list = sort_list(subtypesof(/datum/quirk), GLOBAL_PROC_REF(cmp_quirk_asc))
+	var/list/quirk_list = sort_list(valid_subtypesof(/datum/quirk), GLOBAL_PROC_REF(cmp_quirk_asc))
 
 	for(var/type in quirk_list)
 		var/datum/quirk/quirk_type = type
-
-		if(initial(quirk_type.abstract_parent_type) == type)
-			continue
 		// Celadon REMOVAL OF ERP QUIRK
 		// NOVA EDIT ADDITION START
 		// Hidden quirks aren't visible to TGUI or the player

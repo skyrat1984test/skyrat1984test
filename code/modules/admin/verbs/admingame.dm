@@ -46,6 +46,9 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(show_player_panel, R_ADMIN, "Show Player Panel", mo
 		if(SSplayer_ranks.is_nova_star(player.client, admin_bypass = FALSE))
 			player_ranks += "Veteran" // Celadon EDIT, original: player_ranks += "Nova Star"
 
+		if(SSplayer_ranks.is_centcom(player.client, admin_bypass = FALSE))	//CELADON ADD START
+			player_ranks += "Centcom" 	//CELADON ADD END
+
 		body += "<br><br><b>Player Ranks: </b>[length(player_ranks) ? player_ranks.Join(", ") : "None"]"
 		// NOVA EDIT ADDITION END
 		body += "<br><br><b>CentCom Galactic Ban DB: </b> "
@@ -306,7 +309,7 @@ ADMIN_VERB(respawn_character, R_ADMIN, "Respawn Character", "Respawn a player th
 
 	if(record_found)//If they have a record we can determine a few things.
 		new_character.real_name = record_found.name
-		new_character.gender = LOWER_TEXT(record_found.gender)
+		new_character.gender = record_found.gender
 		new_character.age = record_found.age
 		var/datum/dna/found_dna = record_found.locked_dna
 		new_character.hardset_dna(found_dna.unique_identity, found_dna.mutation_index, null, record_found.name, record_found.blood_type, new record_found.species_type, found_dna.features)

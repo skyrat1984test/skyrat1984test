@@ -84,11 +84,11 @@
 	cost = PAYCHECK_LOWER * 15
 
 /datum/armament_entry/company_import/deforest/first_aid/sterile_gauze
-	item_type = /obj/item/stack/medical/gauze
+	item_type = /obj/item/stack/medical/wrap/gauze
 	cost = PAYCHECK_LOWER * 4
 
 /datum/armament_entry/company_import/deforest/first_aid/sterile_gauze
-	item_type = /obj/item/stack/medical/gauze/sterilized
+	item_type = /obj/item/stack/medical/wrap/gauze/sterilized
 	cost = PAYCHECK_LOWER * 6
 
 /datum/armament_entry/company_import/deforest/first_aid/amollin

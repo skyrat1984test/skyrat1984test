@@ -149,7 +149,7 @@ VOTE_PERIOD 600
 # NO_DEAD_VOTE
 
 ## players' votes default to "No vote" (otherwise,  default to "No change")
-# DEFAULT_NO_VOTE
+DEFAULT_NO_VOTE
 
 ## Determines if players can respawn after death
 ## 0 = Cannot respawn (default)
@@ -158,7 +158,7 @@ VOTE_PERIOD 600
 ALLOW_RESPAWN 2
 
 ## Respawn delay (deciseconds), which doesn't allow to return to lobby
-RESPAWN_DELAY 12000
+RESPAWN_DELAY 6000
 
 ## Uncomment this to stop people connecting to your server without a registered ckey. (i.e. guest-* are all blocked from connecting)
 GUEST_BAN
@@ -210,7 +210,7 @@ RULESURL https://skyrat.celadon.pro/index.php/Правила_Сервера
 GITHUBURL https://github.com/skyrat1984test/skyrat1984test
 
 ## Discord bot command prefix, if the discord bot is used
-# DISCORDBOTCOMMANDPREFIX ?
+DISCORDBOTCOMMANDPREFIX !
 
 ## Round specific stats address
 ## Link to round specific parsed logs; IE statbus. It is appended with the RoundID automatically by ticker/Reboot()

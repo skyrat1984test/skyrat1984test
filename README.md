@@ -2,16 +2,17 @@
 
 [![resentment](.github/images/badges/built-with-resentment.svg)](.github/images/comics/131-bug-free.png) [![technical debt](.github/images/badges/contains-technical-debt.svg)](.github/images/comics/106-tech-debt-modified.png) [![forinfinityandbyond](.github/images/badges/made-in-byond.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
 
-| Website                 | Link                                                                                                                                   |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| Git / GitHub cheatsheet | [https://www.notion.so/Git-GitHub-61bc81766b2e4c7d9a346db3078ce833](https://www.notion.so/Git-GitHub-61bc81766b2e4c7d9a346db3078ce833) |
-| Guide to Modularization | [./modular_nova/readme.md](./modular_nova/readme.md)                                                                                   |
-| Guide to Mirroring      | [./modular_nova/mirroring_guide.md](./modular_nova/mirroring_guide.md)                                                                 |
-| Upstream (Novasector)   | [https://github.com/NovaSector/NovaSector](https://github.com/NovaSector/NovaSector)                                                   |
-| Wiki                    | [https://skyrat.celadon.pro/index.php](https://skyrat.celadon.pro/index.php)                                                           |
-| Codedocs                | [https://NovaSector.github.io/NovaSector/](https://NovaSector.github.io/NovaSector/)                                                   |
-| Celadon Discord          | [https://discord.gg/rxsggTJzY3](https://discord.gg/rxsggTJzY3)                                                                                 |
-| Coderbus Discord        | [https://discord.gg/Vh8TJp9](https://discord.gg/Vh8TJp9)                                                                               |
+| Website                   | Link                                                                                                                                   |
+| -----------------------   | -------------------------------------------------------------------------------------------------------------------------------------- |
+| How to Write a Design Doc | [https://hackmd.io/@tgstation/BkzmU9EyK](https://hackmd.io/@tgstation/BkzmU9EyK)                                                      |
+| Git / GitHub cheatsheet   | [https://www.notion.so/Git-GitHub-61bc81766b2e4c7d9a346db3078ce833](https://www.notion.so/Git-GitHub-61bc81766b2e4c7d9a346db3078ce833) |
+| Guide to Modularization   | [./modular_nova/readme.md](./modular_nova/readme.md)                                                                                   |
+| Guide to Mirroring        | [./modular_nova/mirroring_guide.md](./modular_nova/mirroring_guide.md)                                                                 |
+| Upstream (Novasector)     | [https://github.com/NovaSector/NovaSector](https://github.com/NovaSector/NovaSector)                                                   |
+| Wiki                      | [https://skyrat.celadon.pro/index.php](https://skyrat.celadon.pro/index.php)                                                           |
+| Codedocs                  | [https://NovaSector.github.io/NovaSector/](https://NovaSector.github.io/NovaSector/)                                                   |
+| Celadon Discord           | [https://discord.gg/rxsggTJzY3](https://discord.gg/rxsggTJzY3)                                                                                 |
+| Coderbus Discord          | [https://discord.gg/Vh8TJp9](https://discord.gg/Vh8TJp9)                                                                               |
 
 Space Station 13 is a paranoia-laden round-based roleplaying game set against the backdrop of a nonsensical, metal death trap masquerading as a space station, with charming spritework designed to represent the sci-fi setting and its dangerous undertones. Have fun, and survive!
 

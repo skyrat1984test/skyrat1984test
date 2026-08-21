@@ -261,3 +261,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount/loaded, 28) // Ce
 		new /obj/item/stack/cable_coil(drop, 15)
 	else
 		new /obj/item/stack/sheet/iron(drop, 5)
+
+///For mapping
+/obj/machinery/defibrillator_mount/mobile/immobile
+	anchored = TRUE
+	name = "defibrillator mount"

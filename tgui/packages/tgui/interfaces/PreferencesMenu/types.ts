@@ -12,6 +12,7 @@ export enum Food {
   Alcohol = 'ALCOHOL',
   Breakfast = 'BREAKFAST',
   Bugs = 'BUGS',
+  Bloody = 'BLOODY', // NOVA EDIT ADDITION - Hemophage Food
   Cloth = 'CLOTH',
   Dairy = 'DAIRY',
   Fried = 'FRIED',
@@ -30,7 +31,7 @@ export enum Food {
   Sugar = 'SUGAR',
   Toxic = 'TOXIC',
   Vegetables = 'VEGETABLES',
-  Bloody = 'BLOODY', // NOVA EDIT ADDITION - Hemophage Food
+  Egg = 'EGG',
 }
 
 export enum JobPriority {
@@ -189,42 +190,40 @@ export enum PrefsWindow {
   Keybindings = 2,
 }
 
+export type CharacterPreferencesData = {
+
+  clothing: Record<string, string>;
+  features: Record<string, string>;
+  game_preferences: Record<string, unknown>;
+  non_contextual: {
+    random_body: RandomSetting;
+    [otherKey: string]: unknown;
+  };
+  secondary_features: Record<string, unknown>;
+  supplemental_features: Record<string, unknown>;
+  manually_rendered_features: Record<string, string>;
+
+  names: Record<string, string>;
+  vocals: Record<string, string>; // NOVA EDIT ADDITION
+
+  misc: {
+    gender: Gender;
+    joblessrole: JoblessRole;
+    species: string;
+    loadout_lists: LoadoutList; // NOVA EDIT CHANGE - Multiple loadout presets - ORIGINAL: loadout_list: LoadoutList;
+    job_clothes: BooleanLike;
+    background_state: string; // NOVA EDIT ADDITION: Swappable character editor backgrounds
+    tts_seed: string; // CELADON ADDITION
+  };
+
+  randomization: Record<string, RandomSetting>;
+};
+
 export type PreferencesMenuData = {
   character_preview_view: string;
   character_profiles: (string | null)[];
 
-  preview_options: string[]; // NOVA EDIT ADDITION
-  preview_selection: string; // NOVA EDIT ADDITION
-
-  is_nova_star: BooleanLike; // NOVA EDIT - Star status
-  // Celadon REMOVAL erp_pref: BooleanLike; // NOVA EDIT ADDITION
-
-  character_preferences: {
-    clothing: Record<string, string>;
-    features: Record<string, string>;
-    game_preferences: Record<string, unknown>;
-    non_contextual: {
-      random_body: RandomSetting;
-      [otherKey: string]: unknown;
-    };
-    secondary_features: Record<string, unknown>;
-    supplemental_features: Record<string, unknown>;
-    manually_rendered_features: Record<string, string>;
-
-    names: Record<string, string>;
-    vocals: Record<string, string>; // NOVA EDIT ADDITION
-
-    misc: {
-      gender: Gender;
-      joblessrole: JoblessRole;
-      species: string;
-      loadout_lists: LoadoutList; // NOVA EDIT CHANGE - Multiple loadout presets - ORIGINAL: loadout_list: LoadoutList;
-      job_clothes: BooleanLike;
-      tts_seed: string;
-    };
-
-    randomization: Record<string, RandomSetting>;
-  };
+  character_preferences: CharacterPreferencesData;
 
   content_unlocked: BooleanLike;
 
@@ -239,7 +238,12 @@ export type PreferencesMenuData = {
   >;
   job_preferences: Record<string, JobPriority>;
 
-  // NOVA EDIT
+  // NOVA EDIT ADDITION START
+  preview_options: string[];
+  preview_selection: string;
+
+  // CELADON REMOVAL erp_pref: BooleanLike;
+
   job_alt_titles: Record<string, string>;
 
   robotic_styles: string[];
@@ -256,7 +260,8 @@ export type PreferencesMenuData = {
   species_restricted_jobs?: string[];
   ckey: string;
   is_donator: BooleanLike;
-  // NOVA EDIT END
+  is_nova_star: BooleanLike;
+  // NOVA EDIT ADDITION END
   keybindings: Record<string, string[]>;
   overflow_role: string;
   default_quirk_balance: number;
@@ -311,5 +316,6 @@ export type ServerData = {
     loadout_tabs: LoadoutCategory[];
   };
   species: Record<string, Species>;
+  background_state: { choices: string[] }; // NOVA EDIT ADDITION
   [otherKey: string]: unknown;
 };

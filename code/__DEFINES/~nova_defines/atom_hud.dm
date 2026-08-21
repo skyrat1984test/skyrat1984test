@@ -1,13 +1,11 @@
 // Nova Security
 #define SECHUD_CORRECTIONS_OFFICER "hudcorrectionsofficer"
 // Nova Departmental Guards
-// Celadon REMOVAL START
-// #define SECHUD_ENGINEERING_GUARD "hudengineeringguard"
-// #define SECHUD_ORDERLY "hudorderly"
-// #define SECHUD_CUSTOMS_AGENT "hudcustomsagent"
-// #define SECHUD_BOUNCER "hudbouncer"
-// #define SECHUD_SCIENCE_GUARD "hudscienceguard"
-// Celadon REMOVAL END
+#define SECHUD_ENGINEERING_GUARD "hudengineeringguard"
+#define SECHUD_ORDERLY "hudorderly"
+#define SECHUD_CUSTOMS_AGENT "hudcustomsagent"
+#define SECHUD_BOUNCER "hudbouncer"
+#define SECHUD_SCIENCE_GUARD "hudscienceguard"
 // Nova Nanotrasen
 #define SECHUD_BLUESHIELD "hudblueshield"
 #define SECHUD_NT_CONSULTANT "hudnanotrasenconsultant"

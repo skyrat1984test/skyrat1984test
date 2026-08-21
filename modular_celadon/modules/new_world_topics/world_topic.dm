@@ -8,12 +8,21 @@
 	var/list/presentmins = adm["present"]
 	var/list/afkmins = adm["afk"]
 
+	var/round_time = "[world.time > MIDNIGHT_ROLLOVER ? "[round(world.time/MIDNIGHT_ROLLOVER)]:[round_timestamp(wtime=world.time)]" : round_timestamp(wtime=world.time)]"
+	if (!round_time)
+		round_time = "?"
+
+	var/map_name = SSmapping.current_map?.map_name
+	if (!map_name)
+		map_name = "?"
+
 	.["admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
 	.["security_level"] = SSsecurity_level.get_current_level_as_text()
-	.["round_duration"] = SSticker ? round((world.time-SSticker.round_start_time)/10) : 0
+	.["round_duration"] = round_time
 	.["time_dilation_current"] = SStime_track.time_dilation_current
 	.["time_dilation_avg"] = SStime_track.time_dilation_avg
 	.["gamestate"] = SSticker.current_state
+	.["map_name"] = map_name
 
 /datum/world_topic/fixtts
 	keyword = "fixtts"
@@ -82,7 +91,7 @@
 	.["mode"] = "dynamic"
 	.["respawn"] = config ? !!CONFIG_GET(flag/allow_respawn) : FALSE
 	.["enter"] = !LAZYACCESS(SSlag_switch.measures, DISABLE_NON_OBSJOBS)
-	.["roundtime"] = gameTimestamp()
+	.["roundtime"] = round_timestamp()
 	.["listed"] = GLOB.hub_visibility
 	.["players"] = GLOB.clients.len
 	.["ticker_state"] = SSticker.current_state

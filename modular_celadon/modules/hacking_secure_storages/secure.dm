@@ -1,5 +1,5 @@
 // !!! IMPORTANT !!!
-// When changing anything in this file, also change it in modular_celadon\modules\hacking_secure_storages\secure_closets.dm
+// When changing anything in this file, also change it in hacking_secure_storages\secure_closets.dm
 
 // SO it's exactly same code as secure_closets, but all references to closet/secure_closet replaced by closet/crate/secure
 // Theoretically realization could be moved to separate file, but what we would do with var/broken_lvl then?

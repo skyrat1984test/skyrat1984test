@@ -18,6 +18,9 @@
 	lock_back_sound = 'sound/items/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/items/weapons/gun/pistol/slide_drop.ogg'
 
+/obj/item/gun/ballistic/automatic/pistol/em1911/give_manufacturer_examine()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
+
 /obj/item/ammo_box/magazine/recharge/m1911
 	name = "energy m1911 cell (lethal)"
 	desc = "A rechargeable, detachable battery that serves as a magazine for laser pistols."
@@ -90,10 +93,10 @@
 	spawnwithmagazine = FALSE
 
 
-/obj/item/storage/toolbox/guncase/nova/pistol/ntc
+/obj/item/storage/toolbox/guncase/nova/ntspecial/pistol/ntc
 	name = "Nanotrasen Consultant's Energy M1911 guncase"
 
-/obj/item/storage/toolbox/guncase/nova/pistol/ntc/PopulateContents()
+/obj/item/storage/toolbox/guncase/nova/ntspecial/pistol/ntc/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/pistol/em1911/nomag(src)
 	new /obj/item/ammo_box/magazine/recharge/m1911/disabler(src)
 	new /obj/item/ammo_box/magazine/recharge/m1911/disabler(src)
@@ -107,7 +110,7 @@
 
 /obj/item/choice_beacon/ntc/generate_display_names()
 	var/static/list/selectable_gun_types = list(
-		"Energy M1911 Pistol Set" = /obj/item/storage/toolbox/guncase/nova/pistol/ntc,
+		"Energy M1911 Pistol Set" = /obj/item/storage/toolbox/guncase/nova/ntspecial/pistol/ntc,
 	)
 
 	return selectable_gun_types

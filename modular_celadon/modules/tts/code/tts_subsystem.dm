@@ -192,7 +192,7 @@ SUBSYSTEM_DEF(ttsSilero)
 /datum/controller/subsystem/ttsSilero/Initialize(start_timeofday)
 	is_enabled = CONFIG_GET(flag/tts_enabled)
 	if(!is_enabled)
-		flags |= SS_NO_FIRE
+		ss_flags |= SS_NO_FIRE
 
 	return SS_INIT_SUCCESS
 

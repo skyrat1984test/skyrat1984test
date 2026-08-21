@@ -418,7 +418,7 @@ Allows for flashlights bayonets and adds 1 slot to equipment.
 */
 /obj/item/microfusion_gun_attachment/rail
 	name = "gun rail attachment"
-	desc = "A simple set of rails that attaches to weapon hardpoints. Allows for 3 more attachment slots and the instillation of a flashlight or bayonet."
+	desc = "A simple set of rails that attaches to weapon hardpoints. Allows for the instillation of a flashlight and bayonet."
 	icon_state = "attachment_rail"
 	attachment_overlay_icon_state = "attachment_rail"
 	slot = GUN_SLOT_RAIL
@@ -428,19 +428,24 @@ Allows for flashlights bayonets and adds 1 slot to equipment.
 	microfusion_gun.AddComponent(/datum/component/seclite_attachable, \
 		light_overlay_icon = 'modular_celadon/modules/return_prs/microfusion/icons/microfusion_gun40x32.dmi', \
 		light_overlay = "flight")
-	microfusion_gun = TRUE
+	microfusion_gun.AddComponent(/datum/component/bayonet_attachable, \
+		offset_x = 30, \
+		offset_y = 15)
 
 /obj/item/microfusion_gun_attachment/rail/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
-	var/component_to_delete = microfusion_gun.GetComponent(/datum/component/seclite_attachable)
-	if(component_to_delete)
-		qdel(component_to_delete)
-//	microfusion_gun = initial(microfusion_gun)
+
 	if(microfusion_gun)
+		var/datum/component/seclite_attachable/seclite = microfusion_gun.GetComponent(/datum/component/seclite_attachable)
+		if(seclite)
+			seclite.unscrew_light(microfusion_gun)
+			qdel(seclite)
+		var/datum/component/bayonet_attachable/bayonet = microfusion_gun.GetComponent(/datum/component/bayonet_attachable)
+		if(bayonet)
+			bayonet.unscrew_bayonet(microfusion_gun)
+			qdel(bayonet)
 		microfusion_gun.forceMove(get_turf(microfusion_gun))
-		microfusion_gun = null
 		microfusion_gun.update_appearance()
-	microfusion_gun.remove_all_attachments()
 
 /*
 SCOPE ATTACHMENT
