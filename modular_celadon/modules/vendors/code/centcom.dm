@@ -95,7 +95,7 @@
 		/obj/item/clothing/gloves/tackler/peacekeeper = 1,
 		//shoes
 		/obj/item/clothing/shoes/jackboots/sec = 1,
-		/obj/item/clothing/shoes/jackboots/blue = 1,
+		/obj/item/clothing/shoes/jackboots/sec/blue = 1,
 		/obj/item/clothing/shoes/jackboots/peacekeeper = 1,
 	)
 	access_lists[ACCESS_CENT_SPECOPS] = list(
