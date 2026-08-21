@@ -10095,6 +10095,7 @@
 #include "modular_celadon\modules\upstream-fixes\split_slime_icon\action.dm"
 #include "modular_celadon\modules\upstream-fixes\split_slime_icon\jellypeople.dm"
 #include "modular_celadon\modules\upstream-fixes\split_slime_icon\living.dm"
+#include "modular_celadon\modules\vendors\code\centcom.dm"
 #include "modular_celadon\modules\vendors\code\dorms.dm"
 #include "modular_celadon\modules\votes_stuff\autotransfer.dm"
 #include "modular_celadon\modules\votes_stuff\map_vote.dm"
