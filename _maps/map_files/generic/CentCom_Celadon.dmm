@@ -608,9 +608,7 @@
 /turf/open/floor/iron/dark,
 /area/centcom/tdome/observation)
 "cn" = (
-/turf/open/floor/iron/dark/brick{
-	initial_gas_mix = "o2=0.02;n2=0.07;TEMP=2.7"
-	},
+/turf/open/floor/iron/dark/brick,
 /area/centcom/central_command_areas/crew_wing)
 "cq" = (
 /obj/structure/chair{
@@ -977,9 +975,7 @@
 /obj/machinery/vending/imported/nt{
 	all_products_free = 0
 	},
-/turf/open/floor/iron/small{
-	initial_gas_mix = "o2=0.02;n2=0.07;TEMP=2.7"
-	},
+/turf/open/floor/iron/small,
 /area/centcom/central_command_areas/crew_wing)
 "dG" = (
 /obj/effect/turf_decal/siding/wood{
@@ -1492,9 +1488,7 @@
 /area/centcom/central_command_areas/control)
 "fy" = (
 /obj/item/banner/command,
-/turf/open/floor/iron/dark/brick{
-	initial_gas_mix = "o2=0.02;n2=0.07;TEMP=2.7"
-	},
+/turf/open/floor/iron/dark/brick,
 /area/centcom/central_command_areas/crew_wing)
 "fz" = (
 /obj/structure/chair/comfy/brown{
@@ -1730,9 +1724,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/centcom/central_command_areas/evacuation/ship)
 "gq" = (
-/turf/open/floor/iron/small{
-	initial_gas_mix = "o2=0.02;n2=0.07;TEMP=2.7"
-	},
+/turf/open/floor/iron/small,
 /area/centcom/central_command_areas/crew_wing)
 "gr" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
@@ -5569,9 +5561,7 @@
 /area/centcom/central_command_areas/briefing)
 "ul" = (
 /obj/machinery/vending/sovietsoda,
-/turf/open/floor/iron/small{
-	initial_gas_mix = "o2=0.02;n2=0.07;TEMP=2.7"
-	},
+/turf/open/floor/iron/small,
 /area/centcom/central_command_areas/crew_wing)
 "un" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -9551,9 +9541,7 @@
 /obj/structure/plaque/static_plaque/golden/commission{
 	desc = "Spinward Sector Station SS-13\n'Runtime' Class Outpost\nCommissioned 03/11/2556\n'Dedicated to the CentCom'"
 	},
-/turf/open/floor/iron/dark/pattern_11{
-	initial_gas_mix = "o2=0.02;n2=0.07;TEMP=2.7"
-	},
+/turf/open/floor/iron/dark/pattern_11,
 /area/centcom/central_command_areas/crew_wing)
 "IM" = (
 /obj/structure/table/reinforced,
@@ -12026,9 +12014,7 @@
 /area/centcom/central_command_areas/courtroom)
 "Sk" = (
 /obj/machinery/light/warm/directional/west,
-/turf/open/floor/iron/dark/brick{
-	initial_gas_mix = "o2=0.02;n2=0.07;TEMP=2.7"
-	},
+/turf/open/floor/iron/dark/brick,
 /area/centcom/central_command_areas/crew_wing)
 "Sl" = (
 /obj/structure/table/reinforced,
@@ -12687,9 +12673,7 @@
 /area/centcom/central_command_areas/control)
 "UO" = (
 /obj/machinery/light/directional/north,
-/turf/open/floor/iron/small{
-	initial_gas_mix = "o2=0.02;n2=0.07;TEMP=2.7"
-	},
+/turf/open/floor/iron/small,
 /area/centcom/central_command_areas/crew_wing)
 "UP" = (
 /obj/structure/fans/tiny,
@@ -12715,9 +12699,7 @@
 /area/centcom/central_command_areas/supply)
 "UU" = (
 /obj/machinery/vending/wallmed/directional/west,
-/turf/open/floor/iron/small{
-	initial_gas_mix = "o2=0.02;n2=0.07;TEMP=2.7"
-	},
+/turf/open/floor/iron/small,
 /area/centcom/central_command_areas/crew_wing)
 "UV" = (
 /obj/structure/table/wood/fancy/green,
